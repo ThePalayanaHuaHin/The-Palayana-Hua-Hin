@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Confirmation | The Palayana Hua Hin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --green:#263b32;
+  --green2:#354b3f;
+  --green3:#506458;
+  --gold:#b99b68;
+  --gold-light:#e4d5b8;
+  --cream:#f7f5ef;
+  --cream2:#eeebe2;
+  --text:#303a32;
+  --muted:#898a80;
+  --line:#e8e3d9;
+  --white:#fff;
+  --shadow:0 12px 40px rgba(38,59,50,.07);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:'Prompt',sans-serif;
+  background:#f5f4ef;
+  color:var(--text);
+  font-size:14px;
+  font-weight:300;
+  line-height:1.7;
+}
+
+body.lang-en,
+body.lang-zh{
+  font-family:Arial,'Noto Sans',sans-serif;
+}
+
+button{font-family:inherit;cursor:pointer}
+
+button:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+}
+
+/* HEADER */
+
+.topbar{
+  background:var(--green);
+  color:white;
+  min-height:88px;
+  padding:15px 5.5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(185,155,104,.35);
+}
+
+.brand{
+  text-align:center;
+  line-height:1.2;
+}
+
+.brand-name{
+  font-family:'Playfair Display',serif;
+  font-size:25px;
+  letter-spacing:4px;
+  font-weight:400;
+}
+
+.brand-sub{
+  font-size:9px;
+  letter-spacing:5px;
+  color:var(--gold-light);
+  margin-top:7px;
+}
+
+.language-switch{
+  display:flex;
+  gap:7px;
+}
+
+.lang-btn{
+  min-width:42px;
+  padding:7px 11px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,.28);
+  color:#e9e7df;
+  font-size:10px;
+  transition:.25s;
+}
+
+.lang-btn:hover,
+.lang-btn.active{
+  background:var(--gold);
+  border-color:var(--gold);
+  color:white;
+}
+
+/* MAIN */
+
+.container{
+  max-width:1240px;
+  margin:auto;
+  padding:55px 28px 90px;
+}
+
+.page-heading{
+  text-align:center;
+  margin-bottom:28px;
+}
+
+.eyebrow{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:4px;
+  font-weight:500;
+  margin-bottom:13px;
+}
+
+.page-heading h1{
+  font-family:'Playfair Display',serif;
+  font-size:43px;
+  line-height:1.2;
+  font-weight:400;
+  color:var(--green);
+  margin-bottom:12px;
+}
+
+.page-heading p{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* STEPS */
+
+.steps{
+  max-width:550px;
+  margin:42px auto 55px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.step{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#aaa99f;
+  font-size:10px;
+  letter-spacing:.6px;
+  white-space:nowrap;
+}
+
+.step-number{
+  width:31px;
+  height:31px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #d9d5ca;
+  border-radius:50%;
+  font-size:11px;
+}
+
+.step.active{
+  color:var(--green);
+}
+
+.step.active .step-number{
+  background:var(--green);
+  color:white;
+  border-color:var(--green);
+}
+
+.step-line{
+  width:75px;
+  height:1px;
+  background:#dedbd2;
+  margin:0 17px;
+}
+
+/* BACK NAVIGATION */
+
+.back-navigation{
+  margin-bottom:24px;
+}
+
+.back-button{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid var(--line);
+  background:white;
+  color:var(--green);
+  padding:11px 18px;
+  font-size:11px;
+  transition:.25s;
+  border-radius:2px;
+}
+
+.back-button:hover{
+  background:var(--green);
+  color:white;
+  border-color:var(--green);
+}
+
+.back-button svg{
+  width:16px;
+  height:16px;
+}
+
+/* LAYOUT */
+
+.layout{
+  display:grid;
+  grid-template-columns:1.2fr .82fr;
+  gap:27px;
+  align-items:start;
+}
+
+.panel{
+  background:white;
+  border:1px solid #eae6dd;
+  padding:30px;
+  margin-bottom:24px;
+  box-shadow:var(--shadow);
+  border-radius:3px;
+}
+
+.panel-heading{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.section-label{
+  font-size:9px;
+  letter-spacing:2.5px;
+  color:var(--gold);
+  font-weight:500;
+  margin-bottom:7px;
+}
+
+.panel h2{
+  font-family:'Playfair Display',serif;
+  color:var(--green);
+  font-size:25px;
+  font-weight:400;
+  line-height:1.3;
+}
+
+.heading-icon{
+  width:43px;
+  height:43px;
+  background:var(--cream);
+  color:var(--green);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+
+.heading-icon svg{
+  width:21px;
+  height:21px;
+}
+
+.empty{
+  padding:22px 0;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* ROOM CARDS */
+
+.room-card{
+  padding:22px 0;
+  border-top:1px solid var(--line);
+}
+
+.room-card:first-child{
+  border-top:0;
+  padding-top:0;
+}
+
+.room-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:15px;
+}
+
+.room-name{
+  color:var(--green);
+  font-size:15px;
+  font-weight:500;
+}
+
+.room-type{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:4px;
+}
+
+.room-price{
+  font-family:'Playfair Display',serif;
+  font-size:21px;
+  color:var(--green);
+  white-space:nowrap;
+}
+
+.room-details{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:15px;
+}
+
+.detail-chip{
+  background:#f7f6f1;
+  border:1px solid #efede6;
+  padding:6px 10px;
+  color:#77796f;
+  font-size:10px;
+  border-radius:2px;
+}
+
+.detail-chip strong{
+  color:var(--green);
+  font-weight:500;
+}
+
+.room-child-info{
+  margin-top:12px;
+  padding:12px 14px;
+  background:#f8f6f0;
+  border-left:2px solid var(--gold);
+  font-size:11px;
+  color:#77796f;
+  line-height:1.9;
+}
+
+.room-child-info strong{
+  color:var(--green);
+  font-weight:500;
+}
+
+/* NOTES */
+
+.info-note{
+  margin-top:22px;
+  padding:15px 17px;
+  background:#f8f6f0;
+  border-left:3px solid var(--gold);
+  color:#77796f;
+  font-size:11px;
+  line-height:1.9;
+}
+
+/* PAYMENT */
+
+.payment-method{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:13px 0;
+  border-bottom:1px solid var(--line);
+  font-size:12px;
+}
+
+.payment-method span:first-child{
+  color:var(--muted);
+}
+
+.payment-method strong{
+  color:var(--green);
+  font-weight:500;
+}
+
+.status-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:#94794d;
+  font-size:10px;
+}
+
+.status-dot{
+  width:7px;
+  height:7px;
+  background:var(--gold);
+  border-radius:50%;
+}
+
+.promptpay-box{
+  margin-top:25px;
+  padding:30px 20px;
+  background:#f8f7f2;
+  border:1px solid #e9e5da;
+  text-align:center;
+}
+
+.promptpay-overline{
+  font-size:9px;
+  letter-spacing:3px;
+  color:var(--gold);
+  margin-bottom:5px;
+}
+
+.promptpay-title{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  color:var(--green);
+  font-weight:400;
+}
+
+.promptpay-desc{
+  font-size:11px;
+  color:var(--muted);
+  margin:8px 0 22px;
+}
+
+.promptpay-qr{
+  display:block;
+  width:280px;
+  height:280px;
+  max-width:100%;
+  object-fit:contain;
+  background:white;
+  padding:12px;
+  margin:0 auto 20px;
+  border:1px solid var(--line);
+}
+
+.promptpay-account{
+  padding:15px;
+  background:white;
+  border:1px solid var(--line);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.promptpay-account-name{
+  color:var(--green);
+  font-size:14px;
+  font-weight:500;
+}
+
+.copy-account-btn{
+  border:1px solid var(--green);
+  background:white;
+  color:var(--green);
+  padding:7px 12px;
+  font-size:10px;
+  transition:.2s;
+}
+
+.copy-account-btn:hover{
+  background:var(--green);
+  color:white;
+}
+
+.promptpay-caption{
+  font-size:10px;
+  color:var(--muted);
+  margin-top:14px;
+}
+
+.promptpay-warning{
+  color:#927c58;
+  font-size:10px;
+  line-height:1.9;
+  margin-top:19px;
+}
+
+/* SUMMARY */
+
+.summary-panel{
+  position:relative;
+  overflow:hidden;
+}
+
+.summary-panel:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:3px;
+  background:var(--gold);
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:15px;
+  padding:13px 0;
+  border-bottom:1px solid #f0eee8;
+  font-size:11px;
+}
+
+.summary-row span:first-child{
+  color:var(--muted);
+}
+
+.summary-row span:last-child{
+  color:var(--text);
+  text-align:right;
+  font-weight:500;
+}
+
+.summary-row.discount-row span:last-child{
+  color:#9a8054;
+}
+
+.summary-total{
+  margin-top:17px;
+  padding:20px;
+  background:var(--green);
+  color:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.summary-total-label{
+  font-size:11px;
+  letter-spacing:1px;
+  color:#e8e3d8;
+}
+
+.total-price{
+  font-family:'Playfair Display',serif;
+  font-size:29px;
+  color:white;
+  white-space:nowrap;
+}
+
+/* INVOICE */
+
+.invoice-box{
+  border:1px solid var(--line);
+  background:white;
+}
+
+.invoice-header{
+  background:var(--green);
+  color:white;
+  text-align:center;
+  padding:28px 15px;
+  border-bottom:2px solid var(--gold);
+}
+
+.invoice-header h3{
+  font-family:'Playfair Display',serif;
+  font-size:25px;
+  letter-spacing:3px;
+  font-weight:400;
+}
+
+.invoice-header p{
+  color:var(--gold-light);
+  font-size:8px;
+  letter-spacing:3px;
+  margin-top:6px;
+}
+
+.invoice-body{
+  padding:22px;
+}
+
+.invoice-reference{
+  text-align:center;
+  background:#f8f6f0;
+  padding:15px;
+  margin-bottom:21px;
+}
+
+.invoice-reference small{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  letter-spacing:1px;
+}
+
+.invoice-reference strong{
+  display:block;
+  color:var(--green);
+  font-size:17px;
+  letter-spacing:1px;
+  margin-top:4px;
+}
+
+.invoice-info{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:17px;
+  margin-bottom:25px;
+}
+
+.invoice-info-item small{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  margin-bottom:4px;
+}
+
+.invoice-info-item strong{
+  display:block;
+  color:var(--green);
+  font-size:11px;
+  font-weight:500;
+  overflow-wrap:anywhere;
+}
+
+.invoice-table-title{
+  font-size:10px;
+  letter-spacing:1px;
+  font-weight:500;
+  color:var(--green);
+  padding-bottom:11px;
+  border-bottom:1px solid var(--line);
+}
+
+.invoice-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  padding:17px 0;
+  border-bottom:1px solid #efede7;
+}
+
+.invoice-item-info{
+  flex:1;
+  min-width:0;
+}
+
+.invoice-item-name{
+  color:var(--green);
+  font-size:12px;
+  font-weight:500;
+}
+
+.invoice-item-detail{
+  font-size:10px;
+  color:var(--muted);
+  margin-top:7px;
+  line-height:1.9;
+}
+
+.invoice-item-price{
+  color:var(--green);
+  font-size:12px;
+  font-weight:500;
+  white-space:nowrap;
+}
+
+.invoice-room-dates{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:12px;
+  padding:12px;
+  background:#f8f6f0;
+  border-left:2px solid var(--gold);
+}
+
+.invoice-date-item small{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+}
+
+.invoice-date-item strong{
+  display:block;
+  color:var(--green);
+  font-size:10px;
+  font-weight:500;
+  overflow-wrap:anywhere;
+}
+
+.invoice-total{
+  background:#f8f7f2;
+  padding:15px;
+  margin-top:18px;
+}
+
+.invoice-total-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:7px 0;
+  font-size:10px;
+}
+
+.invoice-total-row span{
+  color:var(--muted);
+}
+
+.invoice-total-row strong{
+  color:var(--green);
+  font-weight:500;
+  text-align:right;
+}
+
+.invoice-grand-total{
+  border-top:1px solid #ded9cd;
+  margin-top:10px;
+  padding-top:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.invoice-grand-total span{
+  color:var(--green);
+  font-size:11px;
+  font-weight:500;
+}
+
+.invoice-grand-total strong{
+  color:var(--green);
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+}
+
+.invoice-status{
+  text-align:center;
+  color:#967c51;
+  font-size:9px;
+  margin-top:17px;
+}
+
+.invoice-copy-btn{
+  width:100%;
+  margin-top:17px;
+  padding:13px;
+  background:white;
+  border:1px solid var(--green);
+  color:var(--green);
+  font-size:10px;
+  letter-spacing:1px;
+  transition:.25s;
+}
+
+.invoice-copy-btn:hover{
+  background:var(--green);
+  color:white;
+}
+
+/* MESSENGER */
+
+.messenger-panel{
+  text-align:center;
+}
+
+.messenger-icon{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#edf4f0;
+  color:#0879e5;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:0 auto 17px;
+}
+
+.messenger-icon svg{
+  width:28px;
+  height:28px;
+}
+
+.messenger-panel h2{
+  margin-bottom:10px;
+}
+
+.messenger-desc{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.9;
+  margin-bottom:20px;
+}
+
+.instruction{
+  text-align:left;
+  background:#f8f6f0;
+  padding:17px 18px;
+  margin:20px 0;
+}
+
+.instruction-title{
+  font-size:11px;
+  color:var(--green);
+  font-weight:500;
+  margin-bottom:8px;
+}
+
+.instruction ol{
+  padding-left:19px;
+  color:#77796f;
+  font-size:10px;
+  line-height:2.1;
+}
+
+.confirm-button{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:17px 15px;
+  border:0;
+  background:var(--green);
+  color:white;
+  font-size:11px;
+  letter-spacing:1.5px;
+  font-weight:500;
+  transition:.25s;
+}
+
+.confirm-button:hover{
+  background:var(--green2);
+}
+
+.confirm-button:disabled{
+  opacity:.6;
+  cursor:wait;
+}
+
+.confirm-button svg{
+  width:18px;
+  height:18px;
+}
+
+.small-note{
+  font-size:10px;
+  color:var(--muted);
+  line-height:1.9;
+  margin-top:15px;
+}
+
+/* FOOTER */
+
+.footer{
+  background:var(--green);
+  color:#d7d2c7;
+  text-align:center;
+  padding:32px 15px;
+  font-size:9px;
+  letter-spacing:2px;
+  border-top:2px solid var(--gold);
+}
+
+.footer strong{
+  display:block;
+  color:white;
+  font-family:'Playfair Display',serif;
+  font-size:19px;
+  font-weight:400;
+  letter-spacing:3px;
+  margin-bottom:8px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+  .layout{
+    grid-template-columns:1fr;
+  }
+
+  .container{
+    max-width:700px;
+  }
+}
+
+@media(max-width:600px){
+  .topbar{
+    padding:16px;
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .brand-name{
+    font-size:23px;
+  }
+
+  .container{
+    padding:38px 15px 60px;
+  }
+
+  .page-heading h1{
+    font-size:33px;
+  }
+
+  .page-heading p{
+    font-size:11px;
+  }
+
+  .steps{
+    margin:32px auto 38px;
+  }
+
+  .step{
+    gap:6px;
+    font-size:8px;
+  }
+
+  .step-number{
+    width:27px;
+    height:27px;
+  }
+
+  .step-line{
+    width:25px;
+    margin:0 7px;
+  }
+
+  .panel{
+    padding:22px 18px;
+  }
+
+  .panel h2{
+    font-size:22px;
+  }
+
+  .room-top{
+    gap:8px;
+  }
+
+  .room-name{
+    font-size:13px;
+  }
+
+  .room-price{
+    font-size:18px;
+  }
+
+  .promptpay-box{
+    padding:24px 13px;
+  }
+
+  .promptpay-qr{
+    width:250px;
+    height:250px;
+  }
+
+  .invoice-body{
+    padding:15px;
+  }
+
+  .invoice-room-dates{
+    grid-template-columns:1fr;
+  }
+
+  .summary-total{
+    padding:16px;
+  }
+
+  .total-price{
+    font-size:25px;
+  }
+}
+
+@media(max-width:360px){
+  .step-line{
+    width:13px;
+    margin:0 4px;
+  }
+
+  .step{
+    font-size:7px;
+  }
+
+  .invoice-info{
+    gap:12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-name">THE PALAYANA</div>
+    <div class="brand-sub">HUA HIN</div>
+  </div>
+
+  <div class="language-switch">
+    <button class="lang-btn active" data-lang="th" onclick="setLanguage('th')">ไทย</button>
+    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+    <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">中文</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="page-heading">
+    <div class="eyebrow">THE PALAYANA HUA HIN</div>
+    <h1 data-i18n="pageTitle">Booking Confirmation</h1>
+    <p data-i18n="pageSubtitle">ตรวจสอบรายละเอียดการจองและดำเนินการชำระเงิน</p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">01</div>
+      <span data-i18n="step1">SELECT ROOM</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step">
+      <div class="step-number">02</div>
+      <span data-i18n="step2">YOUR DETAILS</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step active">
+      <div class="step-number">03</div>
+      <span data-i18n="step3">CONFIRM</span>
+    </div>
+  </div>
+
+  <div class="back-navigation">
+    <button type="button" class="back-button" onclick="goBackToPage2()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5"/>
+        <path d="M12 19l-7-7 7-7"/>
+      </svg>
+      <span data-i18n="backToPage2">ย้อนกลับไปหน้า 2</span>
+    </button>
+  </div>
+
+  <div class="layout">
+
+    <!-- LEFT COLUMN -->
+    <div>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div>
+            <div class="section-label" data-i18n="reservationLabel">YOUR RESERVATION</div>
+            <h2 data-i18n="selectedRooms">Selected Accommodation</h2>
+          </div>
+
+          <div class="heading-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 21V7l9-4 9 4v14"/>
+              <path d="M9 21v-6h6v6"/>
+              <path d="M8 10h.01M16 10h.01"/>
+            </svg>
+          </div>
+        </div>
+
+        <div id="bookingRoomList">
+          <div class="empty" data-i18n="loading">กำลังโหลดข้อมูลการจอง...</div>
+        </div>
+
+        <div class="info-note" data-i18n="reservationNote">
+          กรุณาตรวจสอบชื่อห้องพัก วันเข้าพัก และจำนวนผู้เข้าพักให้ถูกต้องก่อนชำระเงิน
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div>
+            <div class="section-label" data-i18n="paymentLabel">PAYMENT INFORMATION</div>
+            <h2 data-i18n="paymentInstructions">Payment Instructions</h2>
+          </div>
+
+          <div class="heading-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="M3 10h18M7 15h4"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="payment-method">
+          <span data-i18n="paymentMethod">Payment Method</span>
+          <strong>PromptPay</strong>
+        </div>
+
+        <div class="payment-method">
+          <span data-i18n="paymentStatus">Payment Status</span>
+          <span class="status-pill">
+            <span class="status-dot"></span>
+            <span data-i18n="awaitingPayment">Awaiting Payment</span>
+          </span>
+        </div>
+
+        <div class="promptpay-box">
+          <div class="promptpay-overline">SECURE PAYMENT</div>
+          <div class="promptpay-title">PromptPay</div>
+
+          <p class="promptpay-desc" data-i18n="qrDesc">
+            สแกน QR Code ด้านล่างเพื่อชำระเงิน
+          </p>
+
+          <img
+            src="https://i.postimg.cc/zD9qdQPX/hotel-The-Palayana-Hua-Hin-(87).png"
+            alt="The Palayana Hua Hin PromptPay QR Code"
+            class="promptpay-qr"
+          >
+
+          <div class="promptpay-account">
+            <span class="promptpay-account-name" id="promptPayAccountName">( ผู้จองรายใหม่ )</span>
+            <button type="button" class="copy-account-btn" id="copyAccountBtn" onclick="copyPromptPayAccount()" data-i18n="copyName">คัดลอก</button>
+          </div>
+
+          <div class="promptpay-caption" data-i18n="promptpayCaption">
+            กรุณาบันทึกข้อความช่วยจำลงในสลิปก่อนส่งให้โรงแรม
+          </div>
+
+          <div class="promptpay-warning" data-i18n="qrWarning">
+            กรุณาตรวจสอบชื่อบัญชีและยอดเงินก่อนชำระเงิน หลังจากชำระเงินแล้ว กรุณาส่งหลักฐานผ่าน Facebook
+          </div>
+        </div>
+
+        <div class="info-note" data-i18n="paymentNote">
+          หลังจากกด CONFIRM PAYMENT ระบบจะเปิดหน้า Facebook Page ของโรงแรม
+        </div>
+      </section>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div>
+
+      <section class="panel summary-panel">
+        <div class="panel-heading">
+          <div>
+            <div class="section-label" data-i18n="summaryLabel">BOOKING SUMMARY</div>
+            <h2 data-i18n="priceDetails">Price Details</h2>
+          </div>
+
+          <div class="heading-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16v16H4z"/>
+              <path d="M8 9h8M8 13h8M8 17h5"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="summary-row">
+          <span data-i18n="roomSubtotal">Room Subtotal</span>
+          <span id="subtotal">฿0</span>
+        </div>
+
+        <div class="summary-row">
+          <span data-i18n="additionalGuests">Additional Guests</span>
+          <span id="extraTotal">฿0</span>
+        </div>
+
+        <div class="summary-row">
+          <span data-i18n="childFee">Children aged 13 and above</span>
+          <span id="childFeeTotal">฿0</span>
+        </div>
+
+        <div class="summary-row">
+          <span data-i18n="petFee">Pet Fee</span>
+          <span id="petTotal">฿0</span>
+        </div>
+
+        <div class="summary-row discount-row">
+          <span data-i18n="discount">Discount</span>
+          <span id="discountTotal">-฿0</span>
+        </div>
+
+        <div class="summary-total">
+          <span class="summary-total-label" data-i18n="grandTotal">GRAND TOTAL</span>
+          <div class="total-price" id="grandTotal">฿0</div>
+        </div>
+
+        <div class="small-note" data-i18n="discountNote">
+          ส่วนลดคำนวณจากค่าห้องพักเท่านั้น ไม่รวมค่าเด็กและค่าใช้จ่ายเพิ่มเติม
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div>
+            <div class="section-label" data-i18n="invoiceLabel">BOOKING DOCUMENT</div>
+            <h2 data-i18n="invoiceTitle">Booking Invoice</h2>
+          </div>
+
+          <div class="heading-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M6 3h9l4 4v14H6z"/>
+              <path d="M14 3v5h5M9 13h7M9 17h7"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="invoice-box">
+
+          <div class="invoice-header">
+            <h3>THE PALAYANA</h3>
+            <p>HUA HIN · BOOKING INVOICE</p>
+          </div>
+
+          <div class="invoice-body">
+
+            <div class="invoice-reference">
+              <small data-i18n="invoiceNumber">INVOICE REFERENCE</small>
+              <strong id="invoiceReference">-</strong>
+            </div>
+
+            <div class="invoice-info">
+              <div class="invoice-info-item">
+                <small data-i18n="guestName">Guest Name</small>
+                <strong id="invoiceGuest">-</strong>
+              </div>
+
+              <div class="invoice-info-item">
+                <small data-i18n="phone">Phone Number</small>
+                <strong id="invoicePhone">-</strong>
+              </div>
+
+              <div class="invoice-info-item">
+                <small data-i18n="checkin">Check-in</small>
+                <strong id="invoiceCheckin">-</strong>
+              </div>
+
+              <div class="invoice-info-item">
+                <small data-i18n="checkout">Check-out</small>
+                <strong id="invoiceCheckout">-</strong>
+              </div>
+            </div>
+
+            <div class="invoice-table-title" data-i18n="invoiceRoomDetails">
+              ROOM DETAILS
+            </div>
+
+            <div id="invoiceRoomList"></div>
+
+            <div class="invoice-total">
+              <div class="invoice-total-row">
+                <span data-i18n="roomSubtotal">Room Subtotal</span>
+                <strong id="invoiceSubtotal">฿0</strong>
+              </div>
+
+              <div class="invoice-total-row">
+                <span data-i18n="additionalGuests">Additional Guests</span>
+                <strong id="invoiceExtra">฿0</strong>
+              </div>
+
+              <div class="invoice-total-row">
+                <span data-i18n="childFee">Children aged 13 and above</span>
+                <strong id="invoiceChildFee">฿0</strong>
+              </div>
+
+              <div class="invoice-total-row">
+                <span data-i18n="petFee">Pet Fee</span>
+                <strong id="invoicePet">฿0</strong>
+              </div>
+
+              <div class="invoice-total-row">
+                <span data-i18n="discount">Discount</span>
+                <strong id="invoiceDiscount">-฿0</strong>
+              </div>
+
+              <div class="invoice-grand-total">
+                <span data-i18n="grandTotal">GRAND TOTAL</span>
+                <strong id="invoiceGrandTotal">฿0</strong>
+              </div>
+            </div>
+
+            <div class="invoice-status" data-i18n="invoiceStatus">
+              Awaiting Payment Verification
+            </div>
+
+            <button type="button" class="invoice-copy-btn" onclick="copyInvoiceDetails()" data-i18n="copyInvoice">
+              COPY BOOKING INVOICE
+            </button>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="panel messenger-panel">
+        <div class="section-label" data-i18n="finalStep">FINAL STEP</div>
+
+        <div class="messenger-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.14 2 11.25c0 2.91 1.42 5.5 3.65 7.18.19.14.3.37.3.61l.06 1.93c.02.55.59.91 1.1.7l2.15-.95c.18-.08.39-.1.58-.05.69.19 1.42.29 2.16.29 5.52 0 10-4.14 10-9.25S17.52 2 12 2zm1.01 12.46-2.55-2.72a.75.75 0 0 0-.9-.15l-3.12 1.68c-.33.18-.7-.19-.5-.52l3.38-5.37a.75.75 0 0 1 1.17-.12l2.55 2.72a.75.75 0 0 0 .9.15l3.12-1.68c.33-.18.7.19.5.52l-3.38 5.37a.75.75 0 0 1-1.17.12z"/>
+          </svg>
+        </div>
+
+        <h2 data-i18n="confirmPayment">Confirm Payment</h2>
+
+        <p class="messenger-desc" data-i18n="messengerDesc">
+          กดปุ่มด้านล่างเพื่อเข้าสู่ Facebook Page ของโรงแรม และส่งใบแจ้งยอดพร้อมสลิปให้เจ้าหน้าที่
+        </p>
+
+        <div class="instruction">
+          <div class="instruction-title" data-i18n="instructionTitle">ขั้นตอนการส่งหลักฐาน</div>
+          <ol>
+            <li data-i18n="instruction1">กดปุ่ม CONFIRM PAYMENT</li>
+            <li data-i18n="instruction2">คัดลอกรายละเอียดใบแจ้งยอด</li>
+            <li data-i18n="instruction3">เข้าสู่ Facebook Page ของโรงแรม</li>
+            <li data-i18n="instruction4">วางรายละเอียดและแนบรูปสลิป</li>
+            <li data-i18n="instruction5">กดส่งข้อความให้โรงแรม</li>
+          </ol>
+        </div>
+
+        <button class="confirm-button" id="confirmButton" onclick="confirmPayment()">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.14 2 11.25c0 2.91 1.42 5.5 3.65 7.18.19.14.3.37.3.61l.06 1.93c.02.55.59.91 1.1.7l2.15-.95c.18-.08.39-.1.58-.05.69.19 1.42.29 2.16.29 5.52 0 10-4.14 10-9.25S17.52 2 12 2zm1.01 12.46-2.55-2.72a.75.75 0 0 0-.9-.15l-3.12 1.68c-.33.18-.7-.19-.5-.52l3.38-5.37a.75.75 0 0 1 1.17-.12l2.55 2.72a.75.75 0 0 0 .9.15l3.12-1.68c.33-.18.7.19.5.52l-3.38 5.37a.75.75 0 0 1-1.17.12z"/>
+          </svg>
+          <span data-i18n="confirmButton">CONFIRM PAYMENT</span>
+        </button>
+
+        <p class="small-note" data-i18n="finalNote">
+          การจองจะยังไม่ถือว่าสมบูรณ์จนกว่าเจ้าหน้าที่จะตรวจสอบการชำระเงินเรียบร้อยแล้ว
+        </p>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <strong>THE PALAYANA HUA HIN</strong>
+  A PRIVATE ESCAPE BY THE SEA
+</footer>
+
+<script>
+"use strict";
+
+const STORAGE_KEY = "palayanaBooking";
+const LANGUAGE_KEY = "palayanaLanguage";
+const FACEBOOK_PAGE_URL = "https://www.facebook.com/profile.php?id=100084841040974";
+const PAGE2_URL = "new2.html";
+const CHILD_FEE_PER_PERSON_PER_NIGHT = 150;
+
+let booking = {};
+let currentLanguage = "th";
+
+const translations = {
+
+th:{
+pageTitle:"Booking Confirmation",
+pageSubtitle:"ตรวจสอบรายละเอียดการจองและดำเนินการชำระเงิน",
+step1:"SELECT ROOM",
+step2:"YOUR DETAILS",
+step3:"CONFIRM",
+backToPage2:"ย้อนกลับไปหน้า 2",
+
+reservationLabel:"YOUR RESERVATION",
+selectedRooms:"ห้องพักที่เลือก",
+loading:"กำลังโหลดข้อมูลการจอง...",
+reservationNote:"กรุณาตรวจสอบชื่อห้องพัก วันเข้าพัก และจำนวนผู้เข้าพักให้ถูกต้องก่อนชำระเงิน",
+
+paymentLabel:"PAYMENT INFORMATION",
+paymentInstructions:"วิธีการชำระเงิน",
+paymentMethod:"ช่องทางการชำระเงิน",
+paymentStatus:"สถานะการชำระเงิน",
+awaitingPayment:"รอการชำระเงิน",
+qrDesc:"สแกน QR Code ด้านล่างเพื่อชำระเงิน",
+copyName:"คัดลอก",
+copied:"คัดลอกแล้ว!",
+promptpayCaption:"กรุณาบันทึกข้อความช่วยจำลงในสลิปก่อนส่งให้โรงแรม",
+qrWarning:"กรุณาตรวจสอบชื่อบัญชีและยอดเงินก่อนชำระเงิน หลังจากชำระเงินแล้ว กรุณาส่งหลักฐานผ่าน Facebook",
+paymentNote:"หลังจากกด CONFIRM PAYMENT ระบบจะเปิดหน้า Facebook Page ของโรงแรม",
+
+summaryLabel:"BOOKING SUMMARY",
+priceDetails:"รายละเอียดราคา",
+roomSubtotal:"ค่าห้องพัก",
+additionalGuests:"ค่าใช้จ่ายผู้เข้าพักเพิ่มเติม",
+childFee:"ค่าเด็กอายุ 13 ปีขึ้นไป",
+childrenUnder13:"เด็กอายุต่ำกว่า 13 ปี",
+childrenOver13:"เด็กอายุ 13 ปีขึ้นไป",
+childFeeDesc:"150 บาท/คน/คืน รวมอาหารเช้า",
+petFee:"ค่าธรรมเนียมสัตว์เลี้ยง",
+discount:"ส่วนลด",
+grandTotal:"ยอดชำระทั้งหมด",
+discountNote:"ส่วนลดคำนวณจากค่าห้องพักเท่านั้น ไม่รวมค่าเด็กและค่าใช้จ่ายเพิ่มเติม",
+
+finalStep:"FINAL STEP",
+confirmPayment:"ยืนยันการชำระเงิน",
+messengerDesc:"กดปุ่มด้านล่างเพื่อเข้าสู่ Facebook Page ของโรงแรม และส่งใบแจ้งยอดพร้อมสลิปให้เจ้าหน้าที่",
+instructionTitle:"ขั้นตอนการส่งหลักฐาน",
+instruction1:"กดปุ่ม CONFIRM PAYMENT",
+instruction2:"คัดลอกรายละเอียดใบแจ้งยอด",
+instruction3:"เข้าสู่ Facebook Page ของโรงแรม",
+instruction4:"วางรายละเอียดและแนบรูปสลิป",
+instruction5:"กดส่งข้อความให้โรงแรม",
+confirmButton:"CONFIRM PAYMENT",
+opening:"กำลังเปิด Facebook Page...",
+finalNote:"การจองจะยังไม่ถือว่าสมบูรณ์จนกว่าเจ้าหน้าที่จะตรวจสอบการชำระเงินเรียบร้อยแล้ว",
+
+rooms:"จำนวนห้อง",
+nights:"จำนวนคืน",
+checkin:"วันเข้าพัก",
+checkout:"วันออก",
+room:"ห้องพัก",
+noRooms:"ไม่พบข้อมูลห้องพัก กรุณากลับไปเลือกห้องพักอีกครั้ง",
+missingBooking:"ไม่พบข้อมูลการจอง กรุณากลับไปเลือกห้องพักก่อน",
+
+bookingMessage:"ขอส่งใบแจ้งยอดและหลักฐานการชำระเงินเพื่อยืนยันการจอง",
+bookingNumber:"เลขที่การจอง",
+guestName:"ชื่อผู้จอง",
+phone:"เบอร์โทรศัพท์",
+bookingDetails:"รายละเอียดการจอง",
+amount:"ยอดชำระ",
+attachSlip:"ลูกค้าจะส่งสลิปการโอนเงินแนบมาพร้อมข้อความนี้",
+thankYou:"ขอบคุณค่ะ/ครับ",
+
+copySuccess:"คัดลอกเรียบร้อยแล้ว",
+facebookSuccess:"คัดลอกรายละเอียดแล้ว กรุณาวางข้อความในแชต Facebook แนบรูปสลิปและกดส่ง",
+facebookFallback:"กรุณาคัดลอกรายละเอียดใบแจ้งยอด แล้ววางในแชต Facebook พร้อมแนบสลิป",
+
+invoiceLabel:"BOOKING DOCUMENT",
+invoiceTitle:"ใบแจ้งยอดการจอง",
+invoiceNumber:"เลขที่ใบแจ้งยอด",
+invoiceRoomDetails:"รายละเอียดห้องพัก",
+invoiceStatus:"รอการตรวจสอบการชำระเงิน",
+copyInvoice:"คัดลอกรายละเอียดใบแจ้งยอด",
+invoiceCopied:"คัดลอกรายละเอียดใบแจ้งยอดแล้ว",
+
+roomCheckin:"วันเข้าพัก",
+roomCheckout:"วันออกจากห้อง",
+roomQuantity:"จำนวนห้อง",
+roomNights:"จำนวนคืน",
+multipleRoomDates:"ดูวันที่แยกตามห้องด้านล่าง",
+childFeePerNight:"ค่าเด็กต่อคืน",
+backing:"กำลังกลับไปหน้าแก้ไขข้อมูล..."
+},
+
+en:{
+pageTitle:"Booking Confirmation",
+pageSubtitle:"Review your reservation details and proceed with payment",
+step1:"SELECT ROOM",
+step2:"YOUR DETAILS",
+step3:"CONFIRM",
+backToPage2:"Back to Page 2",
+
+reservationLabel:"YOUR RESERVATION",
+selectedRooms:"Selected Accommodation",
+loading:"Loading your booking details...",
+reservationNote:"Please check your room type, stay dates and number of guests before proceeding with payment.",
+
+paymentLabel:"PAYMENT INFORMATION",
+paymentInstructions:"Payment Instructions",
+paymentMethod:"Payment Method",
+paymentStatus:"Payment Status",
+awaitingPayment:"Awaiting Payment",
+qrDesc:"Scan the QR Code below to make your payment",
+copyName:"COPY",
+copied:"COPIED!",
+promptpayCaption:"Please add a booking note to your payment slip before sending it to the hotel.",
+qrWarning:"Please verify the account name and payment amount before transferring. After payment, please send your payment slip via Facebook.",
+paymentNote:"After clicking CONFIRM PAYMENT, the hotel's Facebook Page will open.",
+
+summaryLabel:"BOOKING SUMMARY",
+priceDetails:"Price Details",
+roomSubtotal:"Room Subtotal",
+additionalGuests:"Additional Guests",
+childFee:"Children aged 13 and above",
+childrenUnder13:"Children under 13",
+childrenOver13:"Children aged 13 and above",
+childFeeDesc:"THB 150/person/night, breakfast included",
+petFee:"Pet Fee",
+discount:"Discount",
+grandTotal:"GRAND TOTAL",
+discountNote:"Discount applies to room charges only. Child fees and additional charges are excluded.",
+
+finalStep:"FINAL STEP",
+confirmPayment:"Confirm Payment",
+messengerDesc:"Click below to visit the hotel's Facebook Page and submit your invoice details and payment slip.",
+instructionTitle:"How to Submit Your Payment Slip",
+instruction1:"Click CONFIRM PAYMENT",
+instruction2:"Copy your booking invoice details",
+instruction3:"Visit the hotel's Facebook Page",
+instruction4:"Paste the details and attach your payment slip",
+instruction5:"Send the message to the hotel",
+confirmButton:"CONFIRM PAYMENT",
+opening:"OPENING FACEBOOK PAGE...",
+finalNote:"Your reservation will only be confirmed after our staff verify your payment.",
+
+rooms:"Rooms",
+nights:"Nights",
+checkin:"Check-in",
+checkout:"Check-out",
+room:"Room",
+noRooms:"No room information found. Please return to the room selection page.",
+missingBooking:"No booking information found. Please select your room again.",
+
+bookingMessage:"I would like to submit my invoice and payment slip to confirm my reservation.",
+bookingNumber:"Booking Reference",
+guestName:"Guest Name",
+phone:"Phone Number",
+bookingDetails:"Booking Details",
+amount:"Amount",
+attachSlip:"I will attach my payment slip to this message.",
+thankYou:"Thank you.",
+
+copySuccess:"Copied successfully.",
+facebookSuccess:"Your invoice details have been copied. Paste them into Facebook Messenger, attach your payment slip and send.",
+facebookFallback:"Please copy your invoice details, paste them into Facebook Messenger and attach your payment slip.",
+
+invoiceLabel:"BOOKING DOCUMENT",
+invoiceTitle:"Booking Invoice",
+invoiceNumber:"INVOICE REFERENCE",
+invoiceRoomDetails:"ROOM DETAILS",
+invoiceStatus:"Awaiting Payment Verification",
+copyInvoice:"COPY BOOKING INVOICE",
+invoiceCopied:"Invoice details copied successfully",
+
+roomCheckin:"Check-in",
+roomCheckout:"Check-out",
+roomQuantity:"Room Quantity",
+roomNights:"Nights",
+multipleRoomDates:"See individual room dates below",
+childFeePerNight:"Child fee per night",
+backing:"Returning to booking details..."
+},
+
+zh:{
+pageTitle:"预订确认",
+pageSubtitle:"请检查您的预订信息并继续付款",
+step1:"选择房型",
+step2:"填写资料",
+step3:"确认预订",
+backToPage2:"返回第 2 页",
+
+reservationLabel:"您的预订",
+selectedRooms:"已选择的房型",
+loading:"正在加载预订信息...",
+reservationNote:"付款前请确认房型、入住日期及入住人数是否正确。",
+
+paymentLabel:"付款信息",
+paymentInstructions:"付款说明",
+paymentMethod:"付款方式",
+paymentStatus:"付款状态",
+awaitingPayment:"等待付款",
+qrDesc:"请扫描下方二维码完成付款",
+copyName:"复制",
+copied:"已复制！",
+promptpayCaption:"请在付款凭证备注栏填写预订信息后再发送给酒店。",
+qrWarning:"付款前请确认收款账户名称及金额。付款后请通过 Facebook 发送付款凭证。",
+paymentNote:"点击 CONFIRM PAYMENT 后，系统将打开酒店的 Facebook 主页。",
+
+summaryLabel:"预订摘要",
+priceDetails:"价格详情",
+roomSubtotal:"房费小计",
+additionalGuests:"额外入住人数费用",
+childFee:"13岁及以上儿童费用",
+childrenUnder13:"13岁以下儿童",
+childrenOver13:"13岁及以上儿童",
+childFeeDesc:"每人每晚150泰铢，含早餐",
+petFee:"宠物费用",
+discount:"优惠折扣",
+grandTotal:"应付总额",
+discountNote:"优惠仅适用于房费，不包括儿童费用及其他额外费用。",
+
+finalStep:"最后一步",
+confirmPayment:"确认付款",
+messengerDesc:"请点击下方按钮进入酒店 Facebook 主页，并发送付款单和付款凭证。",
+instructionTitle:"付款凭证提交步骤",
+instruction1:"点击 CONFIRM PAYMENT",
+instruction2:"复制预订付款单信息",
+instruction3:"进入酒店 Facebook 主页",
+instruction4:"粘贴预订信息并附上付款凭证",
+instruction5:"将消息发送给酒店",
+confirmButton:"CONFIRM PAYMENT",
+opening:"正在打开 Facebook 主页...",
+finalNote:"工作人员核实付款后，您的预订才会正式确认。",
+
+rooms:"房间数量",
+nights:"入住晚数",
+checkin:"入住日期",
+checkout:"退房日期",
+room:"房型",
+noRooms:"未找到房间信息，请返回房型选择页面重新选择。",
+missingBooking:"未找到预订信息，请返回并重新选择房型。",
+
+bookingMessage:"您好，我想提交付款单和付款凭证以确认预订。",
+bookingNumber:"预订编号",
+guestName:"预订人姓名",
+phone:"联系电话",
+bookingDetails:"预订详情",
+amount:"应付金额",
+attachSlip:"我会在此消息中附上付款凭证。",
+thankYou:"谢谢。",
+
+copySuccess:"已成功复制。",
+facebookSuccess:"预订付款单信息已复制。请在 Facebook Messenger 中粘贴信息、附上付款凭证并发送。",
+facebookFallback:"请复制预订付款单信息，在 Facebook Messenger 中粘贴并附上付款凭证。",
+
+invoiceLabel:"预订文件",
+invoiceTitle:"预订付款单",
+invoiceNumber:"付款单编号",
+invoiceRoomDetails:"房间详情",
+invoiceStatus:"等待付款核实",
+copyInvoice:"复制预订付款单",
+invoiceCopied:"付款单信息已复制",
+
+roomCheckin:"入住日期",
+roomCheckout:"退房日期",
+roomQuantity:"房间数量",
+roomNights:"入住晚数",
+multipleRoomDates:"请查看下方各房型的入住日期",
+childFeePerNight:"每晚儿童费用",
+backing:"正在返回预订资料页面..."
+}
+};
+
+/* LANGUAGE */
+
+function t(key){
+  return translations[currentLanguage][key] ||
+         translations.th[key] || key;
+}
+
+function setLanguage(lang){
+  if(!translations[lang]) return;
+
+  currentLanguage=lang;
+
+  document.documentElement.lang=
+    lang==="zh"?"zh-CN":lang;
+
+  document.body.classList.remove("lang-en","lang-zh");
+
+  if(lang==="en") document.body.classList.add("lang-en");
+  if(lang==="zh") document.body.classList.add("lang-zh");
+
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key=el.dataset.i18n;
+
+    if(translations[lang][key]){
+      el.textContent=translations[lang][key];
+    }
+  });
+
+  document.querySelectorAll(".lang-btn").forEach(btn=>{
+    btn.classList.toggle("active",btn.dataset.lang===lang);
+  });
+
+  sessionStorage.setItem(LANGUAGE_KEY,lang);
+
+  showBooking();
+}
+
+/* BOOKING DATA */
+
+function getBooking(){
+  try{
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY)||"{}");
+  }catch(error){
+    return {};
+  }
+}
+
+function firstValue(obj,keys,fallback=""){
+  for(const key of keys){
+    if(obj && obj[key]!==undefined &&
+       obj[key]!==null && obj[key]!==""){
+      return obj[key];
+    }
+  }
+  return fallback;
+}
+
+function getRooms(){
+  const rooms=booking.rooms || booking.chosen || [];
+  return Array.isArray(rooms)?rooms:[];
+}
+
+function getRoomName(room){
+  return firstValue(room,["name","roomName","title","type"],t("room"));
+}
+
+function getQuantity(room){
+  return Math.max(1,Number(firstValue(room,["quantity","qty"],1))||1);
+}
+
+function getRoomPrice(room){
+  return Number(firstValue(room,["price","rate","pricePerNight","unitPrice"],0))||0;
+}
+
+function getCheckin(){
+  return firstValue(booking,["checkin","checkIn","checkInDate","check_in"],"");
+}
+
+function getCheckout(){
+  return firstValue(booking,["checkout","checkOut","checkOutDate","check_out"],"");
+}
+
+function getRoomCheckin(room){
+  return firstValue(
+    room,
+    ["checkin","checkIn","checkInDate","check_in"],
+    getRooms().length===1?getCheckin():""
+  );
+}
+
+function getRoomCheckout(room){
+  return firstValue(
+    room,
+    ["checkout","checkOut","checkOutDate","check_out"],
+    getRooms().length===1?getCheckout():""
+  );
+}
+
+function getNights(room){
+  const direct=Number(firstValue(room,["nights","night"],0));
+
+  if(direct>0) return direct;
+
+  const start=getRoomCheckin(room);
+  const end=getRoomCheckout(room);
+
+  if(start && end){
+    const a=new Date(start+"T00:00:00");
+    const b=new Date(end+"T00:00:00");
+
+    if(!isNaN(a.getTime()) && !isNaN(b.getTime())){
+      return Math.max(0,Math.round((b-a)/86400000));
+    }
+  }
+
+  return 0;
+}
+
+function getChildrenUnder13(room){
+  return Math.max(0,Number(firstValue(
+    room,["childrenUnder13","childUnder13"],0
+  ))||0);
+}
+
+function getChildrenOver13(room){
+  return Math.max(0,Number(firstValue(
+    room,["childrenOver13","childOver13","childrenAbove13","children13Plus"],0
+  ))||0);
+}
+
+function getChildFee(room){
+  const explicit=firstValue(
+    room,
+    ["childFeeTotal","childrenFeeTotal","childFee","childrenFee"],
+    null
+  );
+
+  if(explicit!==null){
+    return Math.max(0,Number(explicit)||0);
+  }
+
+  return CHILD_FEE_PER_PERSON_PER_NIGHT *
+    getChildrenOver13(room) *
+    getQuantity(room) *
+    getNights(room);
+}
+
+function getRoomAmount(room){
+  const explicit=firstValue(
+    room,
+    ["roomSubtotal","roomTotal","total","amount"],
+    null
+  );
+
+  if(explicit!==null){
+    return Number(explicit)||0;
+  }
+
+  return getRoomPrice(room)*getQuantity(room)*getNights(room);
+}
+
+function formatDate(date){
+  if(!date) return "-";
+
+  const d=new Date(date+"T00:00:00");
+
+  if(isNaN(d.getTime())) return String(date);
+
+  return d.toLocaleDateString(
+    currentLanguage==="th"?"th-TH":
+    currentLanguage==="zh"?"zh-CN":"en-GB",
+    {
+      day:"numeric",
+      month:"short",
+      year:"numeric"
+    }
+  );
+}
+
+function money(value){
+  const n=Number(value)||0;
+
+  return "฿"+n.toLocaleString(
+    currentLanguage==="th"?"th-TH":
+    currentLanguage==="zh"?"zh-CN":"en-US",
+    {maximumFractionDigits:2}
+  );
+}
+
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g,c=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  })[c]);
+}
+
+/* INVOICE REFERENCE */
+
+function getInvoiceReference(){
+  let reference=firstValue(
+    booking,
+    [
+      "bookingNumber",
+      "bookingId",
+      "reservationId",
+      "reference",
+      "invoiceNumber",
+      "invoiceReference"
+    ],
+    ""
+  );
+
+  if(reference) return String(reference);
+
+  reference="TPH-"+new Date().toISOString()
+    .slice(0,10)
+    .replace(/-/g,"")+
+    "-"+Math.random().toString(36).slice(2,8).toUpperCase();
+
+  booking.invoiceReference=reference;
+
+  sessionStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(booking)
+  );
+
+  return reference;
+}
+
+/* CALCULATE TOTALS */
+
+function getBookingTotals(){
+  const rooms=getRooms();
+
+  const calculatedSubtotal=rooms.reduce(
+    (sum,room)=>sum+getRoomAmount(room),0
+  );
+
+  const subtotal=Number(firstValue(
+    booking,
+    ["roomSubtotal","subtotal","roomTotal"],
+    calculatedSubtotal
+  ))||0;
+
+  const extra=Number(firstValue(
+    booking,
+    ["extraTotal","extraGuestTotal","extraBedTotal"],
+    0
+  ))||0;
+
+  const pet=Number(firstValue(
+    booking,
+    ["petFee","petTotal"],
+    0
+  ))||0;
+
+  const calculatedChildFee=rooms.reduce(
+    (sum,room)=>sum+getChildFee(room),0
+  );
+
+  const childFee=Number(firstValue(
+    booking,
+    ["childFeeTotal","childrenFeeTotal","childTotal"],
+    calculatedChildFee
+  ))||0;
+
+  const discount=Number(firstValue(
+    booking,
+    ["discount","discountTotal"],
+    0
+  ))||0;
+
+  const grand=Math.max(
+    0,
+    subtotal+extra+pet+childFee-discount
+  );
+
+  return {
+    subtotal,
+    extra,
+    pet,
+    childFee,
+    discount,
+    grand
+  };
+}
+
+/* ROOM DISPLAY */
+
+function showBooking(){
+  booking=getBooking();
+
+  const rooms=getRooms();
+  const roomList=document.getElementById("bookingRoomList");
+
+  if(!rooms.length){
+    roomList.innerHTML=
+      `<div class="empty">${escapeHTML(t("noRooms"))}</div>`;
+  }else{
+    roomList.innerHTML=rooms.map(room=>{
+      const qty=getQuantity(room);
+      const nights=getNights(room);
+      const total=getRoomAmount(room);
+      const checkin=getRoomCheckin(room);
+      const checkout=getRoomCheckout(room);
+      const under13=getChildrenUnder13(room);
+      const over13=getChildrenOver13(room);
+      const childFee=getChildFee(room);
+
+      return `
+        <div class="room-card">
+
+          <div class="room-top">
+            <div>
+              <div class="room-name">
+                ${escapeHTML(getRoomName(room))}
+              </div>
+
+              <div class="room-type">
+                ${escapeHTML(firstValue(
+                  room,
+                  ["type","description"],
+                  "The Palayana Hua Hin"
+                ))}
+              </div>
+            </div>
+
+            <div class="room-price">
+              ${money(total)}
+            </div>
+          </div>
+
+          <div class="room-details">
+            <span class="detail-chip">
+              ${t("rooms")}: <strong>${qty}</strong>
+            </span>
+
+            <span class="detail-chip">
+              ${t("nights")}: <strong>${nights||"-"}</strong>
+            </span>
+
+            <span class="detail-chip">
+              ${t("checkin")}: <strong>${escapeHTML(formatDate(checkin))}</strong>
+            </span>
+
+            <span class="detail-chip">
+              ${t("checkout")}: <strong>${escapeHTML(formatDate(checkout))}</strong>
+            </span>
+          </div>
+
+          <div class="room-child-info">
+            ${t("childrenUnder13")}:
+            <strong>${under13}</strong>
+            &nbsp; | &nbsp;
+            ${t("childrenOver13")}:
+            <strong>${over13}</strong>
+            <br>
+            ${t("childFee")}:
+            <strong>${money(childFee)}</strong>
+            <br>
+            ${t("childFeeDesc")}
+          </div>
+
+        </div>
+      `;
+    }).join("");
+  }
+
+  const totals=getBookingTotals();
+
+  document.getElementById("subtotal").textContent=money(totals.subtotal);
+  document.getElementById("extraTotal").textContent=money(totals.extra);
+  document.getElementById("childFeeTotal").textContent=money(totals.childFee);
+  document.getElementById("petTotal").textContent=money(totals.pet);
+  document.getElementById("discountTotal").textContent="-"+money(totals.discount);
+  document.getElementById("grandTotal").textContent=money(totals.grand);
+
+  renderInvoice();
+}
+
+/* INVOICE */
+
+function renderInvoice(){
+  booking=getBooking();
+
+  const totals=getBookingTotals();
+  const rooms=getRooms();
+
+  document.getElementById("invoiceReference").textContent=
+    getInvoiceReference();
+
+  document.getElementById("invoiceGuest").textContent=
+    firstValue(
+      booking,
+      ["customerName","fullName","name","guestName"],
+      "-"
+    );
+
+  document.getElementById("invoicePhone").textContent=
+    firstValue(
+      booking,
+      ["phone","telephone","mobile"],
+      "-"
+    );
+
+  if(rooms.length===1){
+    document.getElementById("invoiceCheckin").textContent=
+      formatDate(getRoomCheckin(rooms[0]));
+
+    document.getElementById("invoiceCheckout").textContent=
+      formatDate(getRoomCheckout(rooms[0]));
+  }else if(rooms.length>1){
+    document.getElementById("invoiceCheckin").textContent=
+      t("multipleRoomDates");
+
+    document.getElementById("invoiceCheckout").textContent=
+      t("multipleRoomDates");
+  }else{
+    document.getElementById("invoiceCheckin").textContent="-";
+    document.getElementById("invoiceCheckout").textContent="-";
+  }
+
+  const roomList=document.getElementById("invoiceRoomList");
+
+  if(!rooms.length){
+    roomList.innerHTML=
+      `<div class="empty">${escapeHTML(t("noRooms"))}</div>`;
+  }else{
+    roomList.innerHTML=rooms.map((room,index)=>{
+      const qty=getQuantity(room);
+      const nights=getNights(room);
+      const checkin=getRoomCheckin(room);
+      const checkout=getRoomCheckout(room);
+      const under13=getChildrenUnder13(room);
+      const over13=getChildrenOver13(room);
+      const childFee=getChildFee(room);
+      const total=getRoomAmount(room);
+
+      return `
+        <div class="invoice-item">
+
+          <div class="invoice-item-info">
+
+            <div class="invoice-item-name">
+              ${index+1}. ${escapeHTML(getRoomName(room))}
+            </div>
+
+            <div class="invoice-item-detail">
+              ${t("roomQuantity")}: ${qty}
+              · ${t("roomNights")}: ${nights||"-"}
+              <br>
+              ${t("childrenUnder13")}: ${under13}
+              <br>
+              ${t("childrenOver13")}: ${over13}
+              <br>
+              ${t("childFee")}: ${money(childFee)}
+              <br>
+              ${t("childFeeDesc")}
+            </div>
+
+            <div class="invoice-room-dates">
+              <div class="invoice-date-item">
+                <small>${t("roomCheckin")}</small>
+                <strong>${escapeHTML(formatDate(checkin))}</strong>
+              </div>
+
+              <div class="invoice-date-item">
+                <small>${t("roomCheckout")}</small>
+                <strong>${escapeHTML(formatDate(checkout))}</strong>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="invoice-item-price">
+            ${money(total)}
+          </div>
+
+        </div>
+      `;
+    }).join("");
+  }
+
+  document.getElementById("invoiceSubtotal").textContent=money(totals.subtotal);
+  document.getElementById("invoiceExtra").textContent=money(totals.extra);
+  document.getElementById("invoiceChildFee").textContent=money(totals.childFee);
+  document.getElementById("invoicePet").textContent=money(totals.pet);
+  document.getElementById("invoiceDiscount").textContent="-"+money(totals.discount);
+  document.getElementById("invoiceGrandTotal").textContent=money(totals.grand);
+}
+
+/* FACEBOOK MESSAGE */
+
+function createBookingMessage(){
+  booking=getBooking();
+
+  const rooms=getRooms();
+  const totals=getBookingTotals();
+
+  const lines=[
+    "THE PALAYANA HUA HIN",
+    "BOOKING INVOICE",
+    "--------------------------------",
+    t("invoiceNumber")+": "+getInvoiceReference(),
+    t("guestName")+": "+firstValue(
+      booking,
+      ["customerName","fullName","name","guestName"],
+      "-"
+    ),
+    t("phone")+": "+firstValue(
+      booking,
+      ["phone","telephone","mobile"],
+      "-"
+    ),
+    "",
+    t("invoiceRoomDetails")+":"
+  ];
+
+  rooms.forEach((room,index)=>{
+    const qty=getQuantity(room);
+    const nights=getNights(room);
+    const under13=getChildrenUnder13(room);
+    const over13=getChildrenOver13(room);
+    const childFee=getChildFee(room);
+    const checkin=getRoomCheckin(room);
+    const checkout=getRoomCheckout(room);
+    const total=getRoomAmount(room);
+
+    lines.push(
+      "",
+      "ROOM "+(index+1),
+      "--------------------------------",
+      t("room")+": "+getRoomName(room),
+      t("roomQuantity")+": "+qty,
+      t("roomCheckin")+": "+formatDate(checkin),
+      t("roomCheckout")+": "+formatDate(checkout),
+      t("roomNights")+": "+(nights||"-"),
+      t("childrenUnder13")+": "+under13,
+      t("childrenOver13")+": "+over13,
+      t("childFee")+": "+money(childFee),
+      t("amount")+": "+money(total)
+    );
+  });
+
+  lines.push(
+    "",
+    "================================",
+    t("roomSubtotal")+": "+money(totals.subtotal),
+    t("additionalGuests")+": "+money(totals.extra),
+    t("childFee")+": "+money(totals.childFee),
+    t("petFee")+": "+money(totals.pet),
+    t("discount")+": -"+money(totals.discount),
+    "",
+    t("grandTotal")+": "+money(totals.grand),
+    "================================",
+    "",
+    t("bookingMessage"),
+    t("attachSlip"),
+    t("thankYou")
+  );
+
+  return lines.join("\n");
+}
+
+/* COPY */
+
+async function copyText(text){
+  if(navigator.clipboard && window.isSecureContext){
+    await navigator.clipboard.writeText(text);
+    return true;
+  }
+
+  const textarea=document.createElement("textarea");
+
+  textarea.value=text;
+  textarea.style.position="fixed";
+  textarea.style.opacity="0";
+
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  const result=document.execCommand("copy");
+
+  textarea.remove();
+
+  if(!result) throw new Error("Copy failed");
+
+  return true;
+}
+
+async function copyInvoiceDetails(){
+  if(!getRooms().length){
+    alert(t("missingBooking"));
+    return;
+  }
+
+  try{
+    await copyText(createBookingMessage());
+    alert(t("invoiceCopied"));
+  }catch(error){
+    alert(t("facebookFallback"));
+  }
+}
+
+async function copyPromptPayAccount(){
+  const name=document
+    .getElementById("promptPayAccountName")
+    .textContent.trim();
+
+  const button=document.getElementById("copyAccountBtn");
+
+  try{
+    await copyText(name);
+
+    button.textContent=t("copied");
+
+    setTimeout(()=>{
+      button.textContent=t("copyName");
+    },2000);
+
+  }catch(error){
+    alert(t("copySuccess"));
+  }
+}
+
+/* CONFIRM PAYMENT */
+
+async function confirmPayment(){
+  booking=getBooking();
+
+  if(!getRooms().length){
+    alert(t("missingBooking"));
+    return;
+  }
+
+  const button=document.getElementById("confirmButton");
+  const label=button.querySelector("[data-i18n]");
+
+  // เปิด Facebook จากการคลิกของผู้ใช้
+  window.open(FACEBOOK_PAGE_URL,"_blank");
+
+  button.disabled=true;
+  label.textContent=t("opening");
+
+  let copied=false;
+
+  try{
+    await copyText(createBookingMessage());
+    copied=true;
+  }catch(error){
+    copied=false;
+  }
+
+  button.disabled=false;
+  label.textContent=t("confirmButton");
+
+  if(copied){
+    alert(t("facebookSuccess"));
+  }else{
+    alert(t("facebookFallback"));
+  }
+}
+
+/* BACK TO PAGE 2 */
+
+function goBackToPage2(){
+  sessionStorage.setItem(LANGUAGE_KEY,currentLanguage);
+
+  // ไม่ลบข้อมูลการจอง เพื่อให้หน้า 2 เรียกข้อมูลเดิมกลับมาได้
+  window.location.href=PAGE2_URL;
+}
+
+/* INITIALIZE */
+
+const savedLanguage=sessionStorage.getItem(LANGUAGE_KEY);
+
+setLanguage(
+  savedLanguage && translations[savedLanguage]
+    ? savedLanguage
+    : "th"
+);
+</script>
+
+</body>
+</html>

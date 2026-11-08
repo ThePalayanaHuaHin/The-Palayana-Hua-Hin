@@ -1,0 +1,1991 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accommodation | The Palayana Hua Hin</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --forest:#263b32;
+ --forest-dark:#172820;
+ --forest-soft:#40584a;
+ --gold:#b99b68;
+ --gold-light:#d9c49e;
+ --cream:#f7f5ef;
+ --paper:#fffefa;
+ --text:#454b43;
+ --muted:#929188;
+ --line:#e9e4d9;
+ --green-light:#edf1eb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+ font-family:'Prompt',sans-serif;
+ background:var(--cream);
+ color:var(--text);
+ font-weight:300;
+}
+button,select,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+/* HEADER */
+.navbar{
+ height:82px;
+ background:var(--forest-dark);
+ color:white;
+ padding:0 6%;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:25px;
+ position:relative;
+ z-index:100;
+}
+.logo{
+ font-family:'Playfair Display',serif;
+ font-size:23px;
+ letter-spacing:3px;
+ color:#fff;
+ line-height:1.1;
+ white-space:nowrap;
+}
+.logo span{
+ display:block;
+ font-family:'Prompt',sans-serif;
+ font-size:9px;
+ letter-spacing:5px;
+ color:var(--gold-light);
+ margin-top:7px;
+ text-align:center;
+}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{
+ font-size:11px;
+ letter-spacing:.4px;
+ color:#e9e6dc;
+ transition:.25s;
+}
+.nav-links a:hover,.nav-links a.current{color:var(--gold-light)}
+.languages{
+ display:flex;
+ align-items:center;
+ gap:9px;
+ white-space:nowrap;
+}
+.languages button{
+ border:0;
+ background:none;
+ color:#c8c9c1;
+ font-size:10px;
+ letter-spacing:1px;
+}
+.languages button.active,.languages button:hover{color:var(--gold-light)}
+
+/* HERO */
+.page-hero{
+ min-height:390px;
+ position:relative;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ color:white;
+ background:
+ linear-gradient(90deg,rgba(16,35,27,.66),rgba(16,35,27,.28),rgba(16,35,27,.65)),
+ url("https://i.postimg.cc/c4mqw127/beachfront-restaurant-sharp.jpg") center 55%/cover;
+}
+.hero-inner{padding:75px 20px}
+.eyebrow{
+ font-size:10px;
+ letter-spacing:5px;
+ color:var(--gold-light);
+ margin-bottom:20px;
+}
+.page-hero h1{
+ font:clamp(42px,6vw,68px)/1.15 'Playfair Display',serif;
+ letter-spacing:1px;
+ font-weight:400;
+}
+.hero-line{
+ width:54px;
+ height:1px;
+ background:var(--gold-light);
+ margin:24px auto;
+}
+.page-hero p{
+ font-size:12px;
+ color:#f1eee7;
+ letter-spacing:.5px;
+ font-weight:300;
+}
+
+/* PAGE */
+.breadcrumb{
+ max-width:1320px;
+ margin:auto;
+ padding:25px 35px 0;
+ font-size:10px;
+ color:#99968b;
+ letter-spacing:.3px;
+}
+.breadcrumb a{color:var(--forest)}
+.breadcrumb span{padding:0 10px;color:var(--gold)}
+.container{
+ max-width:1320px;
+ margin:auto;
+ padding:25px 35px 90px;
+}
+.heading{
+ text-align:center;
+ margin:45px 0 40px;
+}
+.kicker{
+ font-size:9px;
+ letter-spacing:5px;
+ color:var(--gold);
+}
+.heading h2{
+ font:38px 'Playfair Display',serif;
+ color:var(--forest);
+ font-weight:400;
+ margin:14px 0 12px;
+}
+.heading p{
+ font-size:11px;
+ color:var(--muted);
+ letter-spacing:.2px;
+}
+
+/* ROOM CARDS */
+.room-grid{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:30px;
+}
+.room-card{
+ background:var(--paper);
+ border:1px solid #e9e4d9;
+ min-width:0;
+ transition:box-shadow .3s,border-color .3s,transform .3s;
+}
+.room-card:hover{
+ box-shadow:0 16px 45px rgba(30,48,37,.09);
+}
+.room-card.active{
+ border-color:var(--gold);
+ box-shadow:0 12px 38px rgba(185,155,104,.14);
+}
+.gallery{
+ height:310px;
+ position:relative;
+ overflow:hidden;
+ background:#e7e3da;
+}
+.gallery img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ display:block;
+ transition:transform .7s;
+}
+.room-card:hover .gallery img{transform:scale(1.035)}
+.gallery:after{
+ content:"";
+ position:absolute;
+ inset:55% 0 0;
+ background:linear-gradient(transparent,rgba(0,0,0,.22));
+ pointer-events:none;
+}
+.gallery button{
+ position:absolute;
+ z-index:2;
+ top:50%;
+ transform:translateY(-50%);
+ width:39px;
+ height:43px;
+ border:1px solid rgba(255,255,255,.65);
+ background:rgba(23,40,32,.45);
+ color:white;
+ font-size:23px;
+ font-weight:300;
+ transition:.2s;
+}
+.gallery button:hover{background:var(--gold);border-color:var(--gold)}
+.gallery .prev{left:15px}
+.gallery .next{right:15px}
+.gallery-count{
+ position:absolute;
+ z-index:2;
+ bottom:16px;
+ right:17px;
+ color:white;
+ font-size:10px;
+ letter-spacing:1px;
+}
+
+/* ROOM DETAILS */
+.room-content{padding:27px 30px 30px}
+.room-topline{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:10px;
+ margin-bottom:13px;
+}
+.room-tag{
+ color:#9b8054;
+ font-size:9px;
+ letter-spacing:2px;
+ text-transform:uppercase;
+}
+.room-number{
+ font:italic 13px 'Playfair Display',serif;
+ color:#b7ad9c;
+}
+.room-name{
+ font:27px 'Playfair Display',serif;
+ color:var(--forest);
+ font-weight:400;
+ line-height:1.3;
+ margin-bottom:9px;
+}
+.room-type{
+ font-size:11px;
+ color:#8c8d82;
+ line-height:1.8;
+ margin-bottom:20px;
+}
+.room-feature{color:#a88a5c}
+.gold-rule{
+ height:1px;
+ background:var(--line);
+ margin:0 0 20px;
+}
+.amenities{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:13px 15px;
+ margin-bottom:25px;
+}
+.amenity{
+ display:flex;
+ align-items:flex-start;
+ gap:10px;
+ font-size:10px;
+ color:#77796f;
+ line-height:1.7;
+}
+.amenity-icon{
+ color:var(--gold);
+ font-size:15px;
+ line-height:1.2;
+}
+
+/* BOOKING AREA */
+.booking-fields{
+ border-top:1px solid var(--line);
+ padding-top:22px;
+}
+.section-label{
+ font:18px 'Playfair Display',serif;
+ color:var(--forest);
+ margin-bottom:17px;
+}
+.date-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+ margin-bottom:17px;
+}
+.field label,.field-label{
+ display:block;
+ font-size:10px;
+ color:#77796f;
+ margin-bottom:8px;
+ letter-spacing:.2px;
+}
+.calendar-wrap{position:relative}
+.date-trigger{
+ width:100%;
+ min-height:47px;
+ padding:11px 13px;
+ border:1px solid #e2ddd2;
+ background:white;
+ color:var(--forest);
+ text-align:left;
+ font-size:11px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ transition:.2s;
+}
+.date-trigger:hover,.date-trigger.open{border-color:var(--gold)}
+.date-icon{color:var(--gold);font-size:16px}
+.calendar-popup{
+ display:none;
+ position:absolute;
+ z-index:50;
+ top:calc(100% + 7px);
+ left:0;
+ width:310px;
+ max-width:calc(100vw - 45px);
+ background:white;
+ border:1px solid var(--line);
+ box-shadow:0 15px 40px rgba(23,40,32,.15);
+ padding:16px;
+}
+.calendar-popup.show{display:block}
+.calendar-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:14px;
+}
+.calendar-month{
+ font:17px 'Playfair Display',serif;
+ color:var(--forest);
+}
+.calendar-nav{display:flex;gap:7px}
+.calendar-nav button{
+ width:29px;height:29px;
+ border:1px solid var(--line);
+ background:white;color:var(--forest);
+}
+.calendar-weekdays,.calendar-days{
+ display:grid;
+ grid-template-columns:repeat(7,1fr);
+ text-align:center;
+}
+.calendar-weekdays{margin-bottom:7px}
+.calendar-weekdays span{
+ font-size:9px;
+ color:#a69a83;
+ padding:6px 0;
+}
+.calendar-day{
+ height:35px;
+ border:0;
+ background:white;
+ color:#50574e;
+ font-size:10px;
+}
+.calendar-day:hover:not(:disabled){background:#f4efe5;color:var(--forest)}
+.calendar-day:disabled{color:#d5d2cc;cursor:not-allowed}
+.calendar-day.today{border:1px solid var(--gold)}
+.calendar-day.selected{background:var(--forest);color:white}
+.calendar-day.range{background:#f1ede4;color:var(--forest)}
+.calendar-footer{
+ border-top:1px solid var(--line);
+ margin-top:12px;
+ padding-top:10px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ font-size:9px;
+ color:#89897f;
+}
+.calendar-clear{
+ border:0;background:none;color:#9a7950;font-size:9px;
+}
+
+.room-controls{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:13px;
+ margin-top:13px;
+}
+.room-controls select,.child-box select,.pet-weight select{
+ width:100%;
+ padding:11px 12px;
+ border:1px solid #e2ddd2;
+ background:white;
+ color:var(--forest);
+ font-size:11px;
+ min-height:45px;
+ outline:none;
+}
+.room-controls select:focus,.child-box select:focus,.pet-weight select:focus{
+ border-color:var(--gold);
+}
+
+/* CHILDREN */
+.children-section{
+ margin-top:20px;
+ padding:18px;
+ background:#f8f6f0;
+ border:1px solid #ebe5d9;
+}
+.children-heading{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ margin-bottom:14px;
+}
+.children-heading h4{
+ font:17px 'Playfair Display',serif;
+ color:var(--forest);
+}
+.children-limit{
+ font-size:9px;
+ color:#92764f;
+ background:#eee7d9;
+ padding:6px 9px;
+ white-space:nowrap;
+}
+.children-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:11px;
+}
+.child-box{
+ background:white;
+ border:1px solid #e9e3d8;
+ padding:13px;
+}
+.child-box label{
+ display:block;
+ font-size:10px;
+ color:var(--forest);
+ line-height:1.7;
+ margin-bottom:9px;
+}
+.child-box small{
+ display:block;
+ font-size:9px;
+ color:#999187;
+ margin-top:8px;
+ line-height:1.6;
+}
+.child-fee-note{
+ margin-top:12px;
+ font-size:10px;
+ color:#8c795b;
+ line-height:1.8;
+}
+.child-limit-warning{
+ display:none;
+ margin-top:9px;
+ color:#a15f54;
+ font-size:10px;
+}
+.child-limit-warning.show{display:block}
+
+/* PET */
+.pet-box{
+ background:#fffefa;
+ border:1px solid #e9e3d8;
+ padding:17px;
+ margin-top:17px;
+}
+.pet-box h4{
+ font:17px 'Playfair Display',serif;
+ color:var(--forest);
+ margin-bottom:6px;
+}
+.pet-box p{
+ font-size:10px;
+ color:#85867f;
+ margin-bottom:12px;
+ line-height:1.7;
+}
+.pet-choice{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:8px;
+}
+.pet-choice label{
+ display:flex;
+ align-items:center;
+ gap:8px;
+ border:1px solid #e9e3d8;
+ background:white;
+ padding:11px;
+ font-size:10px;
+}
+.pet-choice input{accent-color:var(--forest)}
+.pet-weight{margin-top:12px}
+.pet-status{
+ display:inline-block;
+ margin-top:10px;
+ padding:6px 9px;
+ font-size:9px;
+ background:#f7eeee;
+ color:#a15f54;
+}
+
+/* PRICE */
+.price-row{
+ display:flex;
+ justify-content:space-between;
+ align-items:flex-end;
+ gap:15px;
+ border-top:1px solid var(--line);
+ padding-top:20px;
+ margin-top:22px;
+}
+.price{
+ font:31px 'Playfair Display',serif;
+ color:var(--forest);
+ line-height:1.1;
+}
+.price small{
+ display:block;
+ font:9px Prompt;
+ color:#89897f;
+ margin-top:6px;
+}
+.old-price{
+ font-size:11px;
+ color:#aaa;
+ text-decoration:line-through;
+ margin-bottom:5px;
+}
+.discount-label{
+ display:inline-block;
+ color:#58755b;
+ background:#edf2e9;
+ padding:5px 9px;
+ font-size:9px;
+ margin-top:8px;
+}
+.price-detail{
+ font-size:9px;
+ color:#89897f;
+ margin-top:7px;
+ line-height:1.7;
+}
+.select-btn{
+ border:1px solid var(--forest);
+ background:var(--forest);
+ color:white;
+ padding:13px 22px;
+ min-width:130px;
+ font-size:10px;
+ letter-spacing:.6px;
+ transition:.25s;
+}
+.select-btn:hover,.select-btn.selected{
+ background:var(--gold);
+ border-color:var(--gold);
+ color:var(--forest-dark);
+}
+
+/* SUMMARY */
+.summary{
+ background:var(--paper);
+ border:1px solid var(--line);
+ padding:34px 38px;
+ margin-top:45px;
+}
+.summary-heading{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:15px;
+ border-bottom:1px solid var(--line);
+ padding-bottom:19px;
+ margin-bottom:17px;
+}
+.summary h3{
+ font:27px 'Playfair Display',serif;
+ color:var(--forest);
+}
+.summary-caption{
+ font-size:9px;
+ letter-spacing:2px;
+ color:var(--gold);
+}
+.summary-empty{
+ padding:17px;
+ background:#f8f6f0;
+ color:#85867f;
+ font-size:11px;
+ margin-bottom:14px;
+}
+.summary-line{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:15px;
+ padding:12px 0;
+ border-bottom:1px solid #f0ece5;
+ font-size:11px;
+ color:#62675e;
+}
+.summary-line strong{color:var(--forest);font-weight:500}
+.summary-line.discount{color:#56805f}
+.summary-line.total{
+ border-top:1px solid var(--gold);
+ border-bottom:0;
+ margin-top:10px;
+ padding-top:21px;
+ font-size:20px;
+ font-weight:500;
+ color:var(--forest);
+}
+.remove-btn{
+ border:0;
+ background:none;
+ color:#a36e57;
+ font-size:10px;
+}
+.discount-explain{
+ background:#f3f2eb;
+ padding:15px 18px;
+ margin-top:18px;
+ font-size:10px;
+ color:#68745f;
+ line-height:1.9;
+}
+.booking-warning{
+ font-size:10px;
+ color:#a36e57;
+ margin-top:13px;
+}
+
+/* CONFIRM */
+.confirm-box{
+ background:var(--forest);
+ color:white;
+ padding:35px 38px;
+ margin-top:18px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:25px;
+}
+.confirm-copy{max-width:650px}
+.confirm-box h3{
+ font:26px 'Playfair Display',serif;
+ color:white;
+ margin-bottom:10px;
+}
+.confirm-box p{
+ font-size:10px;
+ color:#d2d6ce;
+ line-height:1.9;
+}
+.confirm-btn{
+ border:1px solid var(--gold-light);
+ background:var(--gold);
+ color:var(--forest-dark);
+ padding:16px 25px;
+ cursor:pointer;
+ font-size:10px;
+ letter-spacing:1px;
+ white-space:nowrap;
+ transition:.2s;
+}
+.confirm-btn:hover{
+ background:var(--gold-light);
+}
+.confirm-btn:disabled{opacity:.6;cursor:wait}
+.confirm-status{
+ font-size:10px;
+ margin-top:12px;
+ line-height:1.8;
+}
+.confirm-status.error{color:#f1b6a9}
+.confirm-status.success{color:#d7e8ce}
+
+/* BOTTOM */
+.bottom-note{
+ margin-top:55px;
+ padding:50px 20px;
+ text-align:center;
+ background:#eeeae0;
+}
+.bottom-note .kicker{margin-bottom:13px}
+.bottom-note h3{
+ font:30px 'Playfair Display',serif;
+ color:var(--forest);
+}
+.bottom-note p{
+ font-size:10px;
+ color:#77796f;
+ margin:12px 0 22px;
+}
+.bottom-btn{
+ display:inline-block;
+ background:var(--forest);
+ color:white;
+ padding:13px 29px;
+ font-size:10px;
+ letter-spacing:1px;
+ transition:.2s;
+}
+.bottom-btn:hover{background:var(--gold);color:var(--forest-dark)}
+
+/* FOOTER */
+footer{
+ background:var(--forest-dark);
+ color:#d9d6cb;
+ padding:45px 20px;
+ text-align:center;
+ font-size:10px;
+ line-height:2.2;
+}
+.footer-logo{
+ font:23px 'Playfair Display',serif;
+ letter-spacing:4px;
+ color:white;
+ margin-bottom:7px;
+}
+.footer-sub{
+ font-size:8px;
+ letter-spacing:4px;
+ color:var(--gold-light);
+ margin-bottom:15px;
+}
+footer a{color:var(--gold-light)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+ .navbar{padding:0 25px}
+ .nav-links{gap:16px}
+ .room-grid{gap:20px}
+ .room-content{padding:23px}
+ .gallery{height:260px}
+}
+@media(max-width:760px){
+ .navbar{height:72px}
+ .nav-links{display:none}
+ .room-grid{grid-template-columns:1fr}
+ .gallery{height:300px}
+ .confirm-box{display:block}
+ .confirm-btn{margin-top:20px;width:100%}
+}
+@media(max-width:600px){
+ .navbar{padding:0 16px}
+ .logo{font-size:18px}
+ .logo span{font-size:8px}
+ .languages{gap:6px}
+ .page-hero{min-height:280px}
+ .hero-inner{padding:55px 15px}
+ .page-hero h1{font-size:39px}
+ .page-hero p{font-size:10px;line-height:1.8}
+ .eyebrow{font-size:8px;letter-spacing:3px}
+ .breadcrumb{padding:18px 17px 0}
+ .container{padding:15px 14px 55px}
+ .heading{margin:35px 0 28px}
+ .heading h2{font-size:29px}
+ .heading p{font-size:10px;line-height:1.8}
+ .gallery{height:235px}
+ .room-content{padding:20px 17px 22px}
+ .room-name{font-size:24px}
+ .amenities{gap:10px}
+ .date-grid,.room-controls{grid-template-columns:1fr}
+ .children-grid{grid-template-columns:1fr 1fr}
+ .pet-choice{grid-template-columns:1fr}
+ .price{font-size:27px}
+ .select-btn{min-width:110px;padding:12px 14px}
+ .summary{padding:23px 17px;margin-top:30px}
+ .summary h3{font-size:24px}
+ .summary-heading{align-items:flex-start;flex-direction:column}
+ .summary-line{flex-wrap:wrap}
+ .summary-line.total{font-size:18px}
+ .confirm-box{padding:26px 20px}
+ .confirm-box h3{font-size:24px}
+ .bottom-note{padding:38px 17px}
+ .bottom-note h3{font-size:26px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+ <a href="index1.html" class="logo">
+  THE PALAYANA
+  <span>HUA HIN</span>
+ </a>
+
+ <nav class="nav-links">
+  <a href="index1.html" data-i="home">หน้าแรก</a>
+  <a href="new2.html" class="current" data-i="rooms">ห้องพัก</a>
+  <a href="index1.html#facilities" data-i="facilities">สิ่งอำนวยความสะดวก</a>
+  <a href="index1.html#contact" data-i="contact">ติดต่อเรา</a>
+ </nav>
+
+ <div class="languages">
+  <button class="active" onclick="setLanguage('th',this)">TH</button>
+  <span>/</span>
+  <button onclick="setLanguage('en',this)">EN</button>
+  <span>/</span>
+  <button onclick="setLanguage('zh',this)">中文</button>
+ </div>
+</header>
+
+<section class="page-hero">
+ <div class="hero-inner">
+  <div class="eyebrow">THE PALAYANA HUA HIN · ACCOMMODATION</div>
+  <h1 data-i="hero">ห้องพักและพูลวิลล่า</h1>
+  <div class="hero-line"></div>
+  <p data-i="heroDesc">เลือกพื้นที่พักผ่อนที่ลงตัว พร้อมสัมผัสบรรยากาศริมทะเลอย่างเป็นส่วนตัว</p>
+ </div>
+</section>
+
+<div class="breadcrumb">
+ <a href="index1.html" data-i="home">หน้าแรก</a>
+ <span>/</span>
+ <span data-i="rooms" style="padding:0;color:inherit">ห้องพัก</span>
+</div>
+
+<main class="container">
+
+ <section class="heading">
+  <div class="kicker">A PLACE TO UNWIND</div>
+  <h2 data-i="title">ค้นพบห้องพักที่ใช่สำหรับคุณ</h2>
+  <p data-i="subtitle">เลือกวันเข้าพัก จำนวนห้อง และบริการเสริมในห้องที่ต้องการ</p>
+ </section>
+
+ <div class="room-grid" id="room-list"></div>
+
+ <section class="summary" id="booking-summary">
+  <div class="summary-heading">
+   <h3 data-i="summaryTitle">สรุปรายการจอง</h3>
+   <div class="summary-caption">YOUR STAY · YOUR EXPERIENCE</div>
+  </div>
+
+  <div id="summaryContent"></div>
+
+  <div class="discount-explain" data-i="discountHint">
+   เลือก 2 ห้อง หรือพัก 2 คืน ลด 10% | เลือก 3 ห้อง หรือพัก 3 คืนขึ้นไป ลด 15%
+  </div>
+
+  <div id="bookingWarning" class="booking-warning"></div>
+ </section>
+
+ <section class="confirm-box" id="confirm-box">
+  <div class="confirm-copy">
+   <h3 data-i="confirmTitle">ยืนยันการจอง</h3>
+   <p data-i="confirmDesc">
+    กรุณาตรวจสอบรายละเอียดห้องพักและวันเข้าพักก่อนกดยืนยัน ระบบจะนำคุณไปยังหน้าชำระเงิน
+   </p>
+   <div id="confirmStatus" class="confirm-status"></div>
+  </div>
+
+  <button class="confirm-btn" type="button" id="confirmButton"
+   onclick="confirmBooking()" data-i="confirmButton">
+   ยืนยันการจองและชำระเงิน →
+  </button>
+ </section>
+
+ <section class="bottom-note">
+  <div class="kicker">THE PALAYANA HUA HIN</div>
+  <h3 data-i="bottomTitle">เริ่มต้นวันพักผ่อนของคุณ</h3>
+  <p data-i="bottomDesc">สอบถามข้อมูลเพิ่มเติมเกี่ยวกับห้องพักและการจองได้ที่โรงแรม</p>
+  <a class="bottom-btn" href="index1.html#contact" data-i="contactUs">ติดต่อเรา</a>
+ </section>
+
+</main>
+
+<footer>
+ <div class="footer-logo">THE PALAYANA HUA HIN</div>
+ <div class="footer-sub">A PRIVATE BEACHFRONT ESCAPE</div>
+ <p>1390/19 Petchkasem Road, Cha-Am, Phetchaburi</p>
+ <p>Tel. +66 32 405 111</p>
+ <p><a href="https://thepalayanahotel.com/" target="_blank">palayanahuahin@palayanahotel.com</a></p>
+</footer>
+
+<script>
+let lang="th";
+let selected={};
+let imageIndexes={};
+let activeCalendar=null;
+
+const CHILD_FEE=200;
+
+const words={
+ th:{
+  hero:"ห้องพักและพูลวิลล่า",
+  heroDesc:"เลือกพื้นที่พักผ่อนที่ลงตัว พร้อมสัมผัสบรรยากาศริมทะเลอย่างเป็นส่วนตัว",
+  home:"หน้าแรก",rooms:"ห้องพัก",facilities:"สิ่งอำนวยความสะดวก",contact:"ติดต่อเรา",
+  title:"ค้นพบห้องพักที่ใช่สำหรับคุณ",
+  subtitle:"เลือกวันเข้าพัก จำนวนห้อง และบริการเสริมในห้องที่ต้องการ",
+  room:"ROOM",checkin:"วันเช็กอิน",checkout:"วันเช็กเอาต์",
+  quantity:"จำนวนห้อง",extra:"เสริมผู้เข้าพัก",person:"ท่าน",
+  noExtra:"ไม่เสริม",extraPrice:"ค่าเสริมผู้เข้าพัก 500 บาท/ท่าน/คืน",
+  max:"สูงสุด",petTitle:"การเข้าพักพร้อมสัตว์เลี้ยง",
+  petDesc:"กรุณาเลือกว่ามีสัตว์เลี้ยงเข้าพักด้วยหรือไม่",
+  petYes:"มีสัตว์เลี้ยง",petNo:"ไม่มีสัตว์เลี้ยง",petWeight:"น้ำหนักสัตว์เลี้ยง",
+  under20:"ต่ำกว่า 20 กก. — ฟรี",over20:"เกิน 20 กก. — 100 บาท",
+  petNotAllowed:"ห้องนี้ไม่อนุญาตสัตว์เลี้ยง",
+  select:"เลือกห้องนี้",selected:"เลือกแล้ว",perNight:"บาท",night:"คืน",
+  chooseDate:"เลือกวันที่",summaryTitle:"สรุปรายการจอง",
+  roomTotal:"ค่าห้องพัก",extraTotal:"ค่าเสริมผู้เข้าพัก",
+  petFee:"ค่าสัตว์เลี้ยง",childFee:"ค่าเด็กอายุ 13 ปีขึ้นไป",
+  childUnderTitle:"เด็กอายุต่ำกว่า 13 ปี",
+  childOverTitle:"เด็กอายุ 13 ปีขึ้นไป",
+  childUnderHint:"ไม่มีค่าใช้จ่าย",
+  childOverHint:"200 บาท/คน/คืน รวมอาหารเช้า",
+  childCount:"จำนวนเด็ก",children:"คน",
+  childLimit:"เด็กเข้าพักได้ไม่เกิน",
+  childLimitError:"จำนวนเด็กรวมกันเกินจำนวนที่ห้องนี้รองรับ",
+  childTotal:"จำนวนเด็กทั้งหมด",
+  discount:"ส่วนลด",total:"ยอดสุทธิ",remove:"นำออก",
+  needDate:"กรุณาเลือกวันเช็กอินและเช็กเอาต์ให้ครบทุกห้อง",
+  discountHint:"เลือก 2 ห้อง หรือพัก 2 คืน ลด 10% | เลือก 3 ห้อง หรือพัก 3 คืนขึ้นไป ลด 15% (ส่วนลดคิดเฉพาะค่าห้องพัก ไม่รวมค่าเด็กและบริการเสริม)",
+  afterDiscount:"ราคาหลังหักส่วนลด",discountApplied:"ลดแล้ว",
+  bottomTitle:"เริ่มต้นวันพักผ่อนของคุณ",
+  bottomDesc:"สอบถามข้อมูลเพิ่มเติมเกี่ยวกับห้องพักและการจองได้ที่โรงแรม",
+  contactUs:"ติดต่อเรา",empty:"ยังไม่ได้เลือกห้องพัก",
+  stay:"รายละเอียดการเข้าพัก",roomsCount:"ห้อง",
+  calendarClear:"ล้างวันที่",calendarCheckin:"เลือกวันเช็กอิน",
+  calendarCheckout:"เลือกวันเช็กเอาต์",datePlaceholder:"เลือกวันที่",
+  featureGarden:"วิวสวน",featureSea:"วิวทะเล",
+  featureJacuzzi:"วิวทะเลพร้อมอ่างจากุซซี่",
+  featurePrivatePool:"สระส่วนตัว",featurePoolSea:"สระส่วนตัวพร้อมวิวทะเล",
+  guestLabel:"ผู้เข้าพัก",
+  confirmTitle:"ยืนยันการจอง",
+  confirmDesc:"กรุณาตรวจสอบรายละเอียดห้องพักและวันเข้าพักก่อนกดยืนยัน ระบบจะนำคุณไปยังหน้าชำระเงิน",
+  confirmButton:"ยืนยันการจองและชำระเงิน →",
+  noRoom:"กรุณาเลือกห้องพักอย่างน้อย 1 ห้อง",
+  noDate:"กรุณาเลือกวันเช็กอินและวันเช็กเอาต์ให้ครบทุกห้อง",
+  invalidDate:"วันเช็กเอาต์ต้องอยู่หลังวันเช็กอิน",
+  success:"กำลังนำคุณไปยังหน้าชำระเงิน...",
+  petUnavailable:"ขณะนี้ห้องพักประเภทนี้ไม่รองรับสัตว์เลี้ยง"
+ },
+ en:{
+  hero:"Rooms & Private Villas",
+  heroDesc:"Discover your ideal retreat and enjoy a peaceful seaside atmosphere.",
+  home:"Home",rooms:"Rooms",facilities:"Facilities",contact:"Contact",
+  title:"Find Your Perfect Stay",
+  subtitle:"Choose your dates, room quantity and additional services.",
+  room:"ROOM",checkin:"Check-in",checkout:"Check-out",
+  quantity:"Number of Rooms",extra:"Extra Guests",person:"guests",
+  noExtra:"None",extraPrice:"Extra guest fee: THB 500/person/night",
+  max:"Maximum",petTitle:"Travelling with Pets",
+  petDesc:"Please select whether you will be travelling with pets.",
+  petYes:"Travelling with pets",petNo:"No pets",petWeight:"Pet weight",
+  under20:"Under 20 kg — Free",over20:"Over 20 kg — THB 100",
+  petNotAllowed:"Pets are not allowed in this room",
+  select:"Select Room",selected:"Selected",perNight:"THB",night:"nights",
+  chooseDate:"Choose dates",summaryTitle:"Booking Summary",
+  roomTotal:"Room subtotal",extraTotal:"Extra guest fee",
+  petFee:"Pet fee",childFee:"Children aged 13 and above",
+  childUnderTitle:"Children under 13 years",
+  childOverTitle:"Children aged 13 and above",
+  childUnderHint:"Free of charge",
+  childOverHint:"THB 200/person/night, breakfast included",
+  childCount:"Number of children",children:"children",
+  childLimit:"Maximum children allowed",
+  childLimitError:"The total number of children exceeds this room's limit",
+  childTotal:"Total children",
+  discount:"Discount",total:"Grand Total",remove:"Remove",
+  needDate:"Please select check-in and check-out dates for every selected room.",
+  discountHint:"2 rooms or 2 nights: 10% off | 3 or more rooms or 3 or more nights: 15% off (Discount applies to room charges only, excluding child fees and extras.)",
+  afterDiscount:"Price after discount",discountApplied:"Discount applied",
+  bottomTitle:"Begin Your Seaside Escape",
+  bottomDesc:"Contact the hotel for more information about rooms and reservations.",
+  contactUs:"CONTACT US",empty:"No rooms selected.",
+  stay:"Stay Details",roomsCount:"rooms",
+  calendarClear:"Clear dates",calendarCheckin:"Choose check-in",
+  calendarCheckout:"Choose check-out",datePlaceholder:"Choose date",
+  featureGarden:"Garden View",featureSea:"Sea View",
+  featureJacuzzi:"Sea View with Jacuzzi",featurePrivatePool:"Private Pool",
+  featurePoolSea:"Private Pool with Sea View",guestLabel:"Guests",
+  confirmTitle:"Confirm Booking",
+  confirmDesc:"Please check your room details and stay dates before confirming. You will then proceed to payment.",
+  confirmButton:"CONFIRM BOOKING & PAY →",
+  noRoom:"Please select at least one room.",
+  noDate:"Please select check-in and check-out dates for all selected rooms.",
+  invalidDate:"Check-out must be after check-in.",
+  success:"Redirecting you to the payment page...",
+  petUnavailable:"Pets are not permitted in this room type."
+ },
+ zh:{
+  hero:"客房与私人别墅",
+  heroDesc:"选择理想的度假空间，享受宁静舒适的海滨时光。",
+  home:"首页",rooms:"客房",facilities:"设施",contact:"联系我们",
+  title:"寻找理想的度假客房",
+  subtitle:"选择入住日期、房间数量及额外服务。",
+  room:"客房",checkin:"入住日期",checkout:"退房日期",
+  quantity:"房间数量",extra:"额外入住人数",person:"位",
+  noExtra:"不增加",extraPrice:"额外入住费用：每人每晚500泰铢",
+  max:"最多",petTitle:"携带宠物入住",
+  petDesc:"请选择是否携带宠物入住。",
+  petYes:"携带宠物",petNo:"没有宠物",petWeight:"宠物体重",
+  under20:"低于20公斤 — 免费",over20:"超过20公斤 — 100泰铢",
+  petNotAllowed:"此房型不允许携带宠物",
+  select:"选择此房型",selected:"已选择",perNight:"泰铢",night:"晚",
+  chooseDate:"选择日期",summaryTitle:"预订摘要",
+  roomTotal:"房费",extraTotal:"额外入住费用",
+  petFee:"宠物费用",childFee:"13岁及以上儿童费用",
+  childUnderTitle:"未满13岁的儿童",
+  childOverTitle:"13岁及以上儿童",
+  childUnderHint:"免费",
+  childOverHint:"每人每晚200泰铢，包含早餐",
+  childCount:"儿童人数",children:"名儿童",
+  childLimit:"每间客房最多可入住儿童",
+  childLimitError:"儿童总人数超过此房型的限制",
+  childTotal:"儿童总人数",
+  discount:"折扣",total:"应付总额",remove:"移除",
+  needDate:"请为每个已选房型填写入住及退房日期。",
+  discountHint:"选择2间客房或入住2晚优惠10% | 选择3间客房或入住3晚以上优惠15%（折扣仅适用于房费，不包含儿童费用及额外服务。）",
+  afterDiscount:"折扣后价格",discountApplied:"已优惠",
+  bottomTitle:"开启您的海滨假期",
+  bottomDesc:"如需了解客房及预订信息，欢迎联系酒店。",
+  contactUs:"联系我们",empty:"尚未选择客房。",
+  stay:"入住信息",roomsCount:"间",
+  calendarClear:"清除日期",calendarCheckin:"选择入住日期",
+  calendarCheckout:"选择退房日期",datePlaceholder:"选择日期",
+  featureGarden:"花园景观",featureSea:"海景",
+  featureJacuzzi:"海景及按摩浴缸",featurePrivatePool:"私人泳池",
+  featurePoolSea:"海景私人泳池",guestLabel:"入住人数",
+  confirmTitle:"确认预订",
+  confirmDesc:"请检查客房信息和入住日期后确认，之后将进入付款页面。",
+  confirmButton:"确认预订并付款 →",
+  noRoom:"请至少选择一间客房。",
+  noDate:"请为所有已选房型填写入住和退房日期。",
+  invalidDate:"退房日期必须晚于入住日期。",
+  success:"正在跳转至付款页面...",
+  petUnavailable:"此房型不允许携带宠物入住。"
+ }
+};
+
+function T(key){
+ return words[lang][key]||key;
+}
+
+function money(n){
+ return new Intl.NumberFormat(
+  lang==="th"?"th-TH":lang==="zh"?"zh-CN":"en-US"
+ ).format(n);
+}
+
+function localDate(date){
+ const locale=lang==="th"?"th-TH":lang==="zh"?"zh-CN":"en-US";
+ return new Intl.DateTimeFormat(locale,{
+  day:"numeric",
+  month:"short",
+  year:"numeric",
+  calendar:lang==="th"?"buddhist":"gregory"
+ }).format(date);
+}
+
+function isoDate(date){
+ const y=date.getFullYear();
+ const m=String(date.getMonth()+1).padStart(2,"0");
+ const d=String(date.getDate()).padStart(2,"0");
+ return `${y}-${m}-${d}`;
+}
+
+function parseDate(value){
+ if(!value)return null;
+ const [y,m,d]=value.split("-").map(Number);
+ return new Date(y,m-1,d);
+}
+
+function todayISO(){
+ return isoDate(new Date());
+}
+
+/* ROOM DATA */
+const rooms=[
+ {
+  id:"v1",name:"Deluxe Garden View",price:1800,
+  size:"65 ตร.ม. | ชั้น 2–3",
+  enSize:"65 m² | Floors 2–3",
+  zhSize:"65平方米 | 2–3层",
+  capacity:2,maxExtra:1,maxChildren:3,
+  feature:"featureGarden",petAllowed:false,
+  images:[
+   "https://i.postimg.cc/52hmtLgw/1mc4e12000gp7lt3q22F2-W-1280-853-R5.webp",
+   "https://i.postimg.cc/2Ssx5hGn/1mc4n12000q2i7cts86DF-W-1280-853-R5.webp",
+   "https://i.postimg.cc/mgvSrCjY/1mc4p12000q28sb1e9E01-W-1280-853-R5.webp",
+   "https://i.postimg.cc/pLwBdzCk/0222t12000q6jrhv83E8F-W-1280-853-R5.webp",
+   "https://i.postimg.cc/7ZFNL09s/0585112000srr2u2p-F336-W-1280-853-R5.webp",
+   "https://i.postimg.cc/cLpcJwhc/1mc0212000q28sghn-DDD8-W-1280-853-R5.webp",
+   "https://i.postimg.cc/52hmtLgq/1mc2412000q28s3mj-B3F5-W-1280-853-R5.webp",
+   "https://i.postimg.cc/htzrgpLp/1mc2v12000q2i7hl0BB91-W-1280-853-R5.webp",
+   "https://i.postimg.cc/K865YBfN/1mc3912000gp7m2fi-BCC3-W-1280-853-R5.webp",
+   "https://i.postimg.cc/2Ssx5hGd/1mc2w12000q2i7cu4F618-W-1280-853-R5.webp"
+  ]
+ },
+ {
+  id:"v2",name:"Deluxe Sea View",price:2000,
+  size:"65 ตร.ม. | ชั้น 3–5",
+  enSize:"65 m² | Floors 3–5",
+  zhSize:"65平方米 | 3–5层",
+  capacity:2,maxExtra:1,maxChildren:3,
+  feature:"featureSea",petAllowed:false,
+  images:[
+   "https://i.postimg.cc/fRfxMp30/1mc4s12000q28sdqg-B401-W-1280-853-R5.webp",
+   "https://i.postimg.cc/5t98ygvK/0226f12000kzp8ayk6619-W-1280-853-R5.webp",
+   "https://i.postimg.cc/mgvSrCjY/1mc4p12000q28sb1e9E01-W-1280-853-R5.webp",
+   "https://i.postimg.cc/fbWYyCXH/0220m12000q6jz2ad-CEA5-W-1280-853-R5.webp",
+   "https://i.postimg.cc/BnBxJk82/1mc4m12000gp5eauy-FB58-W-1280-853-R5.webp",
+   "https://i.postimg.cc/MpmyzNcx/1mc1p12000gp5de7d-DC0C-W-1280-853-R5.webp",
+   "https://i.postimg.cc/R0CwhdfK/1mc3812000gp5dh1m7DD5-W-1280-853-R5.webp",
+   "https://i.postimg.cc/N0GRFDT1/1mc4212000q28rymm-C6A0-W-1280-853-R5.webp",
+   "https://i.postimg.cc/5t98ygLd/0585712000sutkgkz3017-W-1280-853-R5.webp",
+   "https://i.postimg.cc/VNsXvgMh/0584b12000sugijcm-E7B9-W-1280-853-R5.webp",
+   "https://i.postimg.cc/FHMxK3pV/1mc3612000q28rymk2F9B-W-1280-853-R5.webp",
+   "https://i.postimg.cc/cLpcJwhc/1mc0212000q28sghn-DDD8-W-1280-853-R5.webp"
+  ]
+ },
+ {
+  id:"v3",name:"Sea View Sky Villa",price:2500,
+  size:"110 ตร.ม. | ชั้น 4–5",
+  enSize:"110 m² | Floors 4–5",
+  zhSize:"110平方米 | 4–5层",
+  capacity:2,maxExtra:1,maxChildren:3,
+  feature:"featureJacuzzi",petAllowed:false,
+  images:[
+   "https://i.postimg.cc/zBrZTLDr/0220c12000q6k0qa773FF-W-1280-853-R5.webp",
+   "https://i.postimg.cc/267pGzyK/0220g12000kzyadif2A21-W-1280-853-R5.webp",
+   "https://i.postimg.cc/NMcqRys6/1mc0j12000q2berka65E1-W-1280-853-R5.webp",
+   "https://i.postimg.cc/FR450frp/1mc0o12000gp4d2es-A2E5-W-1280-853-R5.webp",
+   "https://i.postimg.cc/JnLVjyrK/1mc0p12000gt5xoub5495-W-1280-853-R5.webp",
+   "https://i.postimg.cc/Qt3GcB8q/1mc0z12000gp4d91d-AFF4-W-1280-853-R5.webp",
+   "https://i.postimg.cc/ZRSt69bQ/1mc1112000fauxnr57B4B-W-1280-853-R5.webp",
+   "hhttps://i.postimg.cc/ydH40J15/1mc1912000q29jl0d8074-W-1280-853-R5.webp",
+   "https://i.postimg.cc/hjBWVJDr/1mc1u12000faubl4x-FD95-W-1280-853-R5.webp",
+   "https://i.postimg.cc/k4m3WVJY/1mc1w12000gp4d91v-FBBC-W-1280-853-R5.webp",
+   "https://i.postimg.cc/pTHbK9W1/1mc2f12000gp4e17r-DFDF-W-1280-853-R5.webp",
+   "https://i.postimg.cc/d1YPG7QM/1mc3912000gp4er321724-W-1280-853-R5.webp",
+   "https://i.postimg.cc/d1YPG7sb/1mc6n12000gp4drou1C79-W-1280-853-R5.webp",
+   "https://i.postimg.cc/cHSyfK1G/1mc4812000q29j1557AD6-W-1280-853-R5.webp"
+  ]
+ },
+ {
+  id:"v5",name:"Deluxe Family 2 Bedroom",price:3000,
+  size:"75 ตร.ม. | ชั้น 1–2",
+  enSize:"75 m² | Floors 1–2",
+  zhSize:"75平方米 | 1–2层",
+  capacity:4,maxExtra:2,maxChildren:3,
+  feature:"featureGarden",petAllowed:false,
+  images:[
+   "https://i.postimg.cc/CK1T7ykJ/1mc1y12000gp53jwz-FF21-W-1280-853-R5.webp",
+   "https://i.postimg.cc/KYHXs9Dt/1mc2r12000gp52b6f-F3E9-W-1280-853-R5.webp",
+   "https://i.postimg.cc/PqRGF6Q2/1mc3612000gp53lyq-DE0E-W-1280-853-R5.webp",
+   "https://i.postimg.cc/xdCD5rMs/1mc2z12000gp52zfn5C8C-W-1280-853-R5.webp",
+   "https://i.postimg.cc/xd4rFs3M/1mc2r12000gp530v2BDF9-W-1280-853-R5.webp",
+   "https://i.postimg.cc/pdTbCNzQ/1mc0a12000gp52xjr-C1EB-W-1280-853-R5.webp",
+   "https://i.postimg.cc/d0xMSWj5/1mc5312000q28pzbq-F1E8-W-1280-853-R5.webp"
+  ]
+ },
+ {
+  id:"v4",name:"One Bedroom Pool Villa",price:3500,
+  size:"157 ตร.ม.",
+  enSize:"157 m²",
+  zhSize:"157平方米",
+  capacity:2,maxExtra:1,maxChildren:6,
+  feature:"featurePrivatePool",petAllowed:false,
+  images:[
+   "https://i.postimg.cc/qvV9Phn4/1mc1v12000q2c07lr-B13C-W-1280-853-R5.webp",
+   "https://i.postimg.cc/9Q5v6RT2/1mc1p12000q2bz89r4149-W-1280-853-R5.webp",
+   "https://i.postimg.cc/dVPzbkdV/1mc4212000q2c2sxv-A382-W-1280-853-R5.webp",
+   "https://i.postimg.cc/XYSTRGF3/1mc4u12000q2bz1ve96FF-W-1280-853-R5.webp",
+   "https://i.postimg.cc/qvV9PhnN/0221b12000kxkyl789E08-W-1280-853-R5.webp",
+   "https://i.postimg.cc/Dwkt9Js0/0222v12000oohkkcl7DD3-W-1280-853-R5.webp",
+   "https://i.postimg.cc/fRn6GtXt/0226012000q6k0fns-B98C-W-1280-853-R5.webp",
+   "https://i.postimg.cc/nh46pFYc/0581512000sza9uwv-FEAD-W-1280-853-R5.webp",
+   "https://i.postimg.cc/rw1vMVCV/0581812000szb2vq20B41-W-1280-853-R5.webp",
+   "https://i.postimg.cc/x1DWwJmh/1mc0f12000q2bz4876B93-W-1280-853-R5.webp",
+   "https://i.postimg.cc/mgf0vzM2/1mc1412000q2bz4ds2856-W-1280-853-R5.webp",
+   "https://i.postimg.cc/P5sBgpZN/1mc4412000gp5ok8i0470-W-1280-853-R5.webp",
+   "https://i.postimg.cc/7Z8pFG7L/1mc6k12000gp5mwe3D82E-W-1280-853-R5.webp",
+   "https://i.postimg.cc/W1LQBFrp/1mc6m12000q2bywyt-E2BB-W-1280-853-R5.webp",
+   "https://i.postimg.cc/4x6rsfbx/850871199-1135270586111174-5732585909083114670-n.webp"
+  ]
+ },
+ {
+  id:"v6",name:"Two Bedroom Pool Villa",price:4500,
+  size:"222 ตร.ม.",
+  enSize:"222 m²",
+  zhSize:"222平方米",
+  capacity:4,maxExtra:3,maxChildren:6,
+  feature:"featurePrivatePool",petAllowed:false,
+  images:[
+   "https://i.postimg.cc/L6TbbCHj/1mc2z12000gp3pczh74FA-W-1280-853-R5.webp",
+   "https://i.postimg.cc/jdXFFgsg/1mc6q12000gp43wzu-C1C4-W-1280-853-R5.webp",
+   "https://i.postimg.cc/MKDFFPWL/1mc5912000gp45js1C38A-W-1280-853-R5.webp",
+   "https://i.postimg.cc/GhQ557c6/0224i12000r7sw66h3C87-W-1280-853-R5.webp",
+   "https://i.postimg.cc/TY9447RW/1mc1b12000q26ad9c5725-W-1280-853-R5.webp",
+   "https://i.postimg.cc/rFJPPn8Z/1mc0812000gp3pc08D5EC-W-1280-853-R5.webp",
+   "https://i.postimg.cc/XYYzSfJP/0581712000szbeoxu00DE-W-1280-853-R5.webp",
+   "https://i.postimg.cc/bwwBcxJF/0580f12000szbf00y51BD-W-1280-853-R5.webp",
+   "https://i.postimg.cc/HkkhDwxv/0581w12000szaikpc-FD78-W-1280-853-R5.webp",
+   "https://i.postimg.cc/c4mbb9sr/1mc0c12000gp44j004D43-W-1280-853-R5.webp",
+   "https://i.postimg.cc/DygMMj2L/1mc2d12000gp446jz0DCE-W-1280-853-R5.webp",
+   "https://i.postimg.cc/VLRVVGYC/1mc2p12000gp3q76s-BFB5-W-1280-853-R5.webp",
+   "https://i.postimg.cc/vHzNNqQX/1mc5l12000gp44amb0813-W-1280-853-R5.webp"
+  ]
+ },
+ {
+  id:"v7",name:"Seaview Three Bedroom Pool Villa",price:6000,
+  size:"375 ตร.ม.",
+  enSize:"375 m²",
+  zhSize:"375平方米",
+  capacity:6,maxExtra:5,maxChildren:8,
+  feature:"featurePoolSea",petAllowed:false,
+  images:[
+   "https://i.postimg.cc/TY6P9wwG/1mc0f12000gp6zwj9AA3B-W-1280-853-R5.webp",
+   "https://i.postimg.cc/fTNbKLLL/1mc0i12000q2cf3zs78BB-W-1280-853-R5.webp",
+   "https://i.postimg.cc/dtY0B11V/1mc1r12000gp6wihl5077-W-1280-853-R5.webp",
+   "https://i.postimg.cc/SNhKrssK/1mc1w12000gp6wyr7CB13-W-1280-853-R5.webp",
+   "https://i.postimg.cc/jdbjX55s/1mc1z12000gp6wpjd0FEB-W-1280-853-R5.webp",
+   "https://i.postimg.cc/zXrfjBBw/1mc2112000gp6wzxg4346-W-1280-853-R5.webp",
+   "https://i.postimg.cc/CLgKN11m/1mc2112000q2cffcd-C91F-W-1280-853-R5.webp",
+   "https://i.postimg.cc/TYJ3H6Lj/1mc2312000gp6wz6805B4-W-1280-853-R5.webp",
+   "https://i.postimg.cc/28D5w66L/1mc2s12000gp6zito719A-W-1280-853-R5.webp",
+   "https://i.postimg.cc/c4SJmHHK/1mc2s12000q2cfq0v9242-W-1280-853-R5.webp",
+   "https://i.postimg.cc/9FYQNhRt/1mc4512000gp6x0av25BB-W-1280-853-R5.webp",
+   "https://i.postimg.cc/15QzHttq/1mc4e12000gp6xgzx5C65-W-1280-853-R5.webp",
+   "https://i.postimg.cc/wTpBVvvs/1mc5b12000q2wcnpq-C7AE-W-1280-853-R5.webp",
+   "https://i.postimg.cc/ncJLkzzq/1mc6g12000q2wclr9C2A0-W-1280-853-R5.webp",
+   "https://i.postimg.cc/Nfc04MMx/1mc6t12000faun04l5AF6-W-1280-853-R5.webp",
+   "https://i.postimg.cc/CLsx6gBs/1mc7312000gp6z0f7CEFE-W-1280-853-R5.webp",
+   "https://i.postimg.cc/8PSCH55m/1mc6u12000gp704dd391F-W-1280-853-R5.webp"
+  ]
+ }
+];
+
+function stateOf(id){
+ if(!selected[id]){
+  selected[id]={
+   qty:0,
+   extra:0,
+   childUnder13:0,
+   child13Plus:0,
+   checkin:"",
+   checkout:"",
+   pet:"no",
+   weight:"small"
+  };
+ }
+ return selected[id];
+}
+
+function getNights(s){
+ if(!s.checkin||!s.checkout)return 0;
+ const n=(parseDate(s.checkout)-parseDate(s.checkin))/86400000;
+ return n>0?n:0;
+}
+
+function roomSize(room){
+ if(lang==="en")return room.enSize;
+ if(lang==="zh")return room.zhSize;
+ return room.size;
+}
+
+function baseGuests(room){
+ if(lang==="en")return `${room.capacity} ${T("guestLabel")}`;
+ if(lang==="zh")return `${room.capacity}位${T("guestLabel")}`;
+ return `${T("guestLabel")} ${room.capacity} ท่าน`;
+}
+
+function childCount(s){
+ return Number(s.childUnder13||0)+Number(s.child13Plus||0);
+}
+
+function getBookingStats(){
+ const chosen=rooms.filter(r=>stateOf(r.id).qty>0);
+ const totalRooms=chosen.reduce((sum,r)=>sum+stateOf(r.id).qty,0);
+ const totalNights=chosen.reduce((max,r)=>Math.max(max,getNights(stateOf(r.id))),0);
+
+ let rate=0;
+ if(totalRooms>=3||totalNights>=3)rate=.15;
+ else if(totalRooms>=2||totalNights>=2)rate=.10;
+
+ return {chosen,totalRooms,totalNights,rate};
+}
+
+/* CALENDAR */
+function openCalendar(id,key){
+ const s=stateOf(id);
+ const current=s[key]?parseDate(s[key]):new Date();
+ activeCalendar={
+  id,key,
+  year:current.getFullYear(),
+  month:current.getMonth()
+ };
+ renderRooms();
+}
+
+function changeCalendarMonth(id,key,delta){
+ if(!activeCalendar||activeCalendar.id!==id||activeCalendar.key!==key)return;
+ const d=new Date(activeCalendar.year,activeCalendar.month+delta,1);
+ activeCalendar.year=d.getFullYear();
+ activeCalendar.month=d.getMonth();
+ renderRooms();
+}
+
+function calendarHTML(room,key,s){
+ const isOpen=activeCalendar&&activeCalendar.id===room.id&&activeCalendar.key===key;
+ const value=s[key];
+ const date=value?parseDate(value):null;
+ const label=date?localDate(date):T("datePlaceholder");
+ let popup="";
+
+ if(isOpen){
+  const year=activeCalendar.year;
+  const month=activeCalendar.month;
+  const first=new Date(year,month,1);
+  const last=new Date(year,month+1,0);
+  const offset=(first.getDay()+6)%7;
+  const today=todayISO();
+  const locale=lang==="th"?"th-TH":lang==="zh"?"zh-CN":"en-US";
+
+  const monthTitle=new Intl.DateTimeFormat(locale,{
+   month:"long",
+   year:"numeric",
+   calendar:lang==="th"?"buddhist":"gregory"
+  }).format(first);
+
+  const weekdayNames=lang==="th"
+   ?["จ","อ","พ","พฤ","ศ","ส","อา"]
+   :lang==="zh"
+   ?["一","二","三","四","五","六","日"]
+   :["Mo","Tu","We","Th","Fr","Sa","Su"];
+
+  let days="";
+  for(let i=0;i<offset;i++)days+="<span></span>";
+
+  for(let day=1;day<=last.getDate();day++){
+   const iso=isoDate(new Date(year,month,day));
+   const disabled=iso<today||(key==="checkout"&&s.checkin&&iso<=s.checkin);
+   const isSelected=value===iso;
+   const isToday=iso===today;
+   const isRange=s.checkin&&s.checkout&&iso>s.checkin&&iso<s.checkout;
+
+   days+=`
+    <button type="button"
+     class="calendar-day ${isSelected?"selected":""} ${isToday?"today":""} ${isRange?"range":""}"
+     ${disabled?"disabled":""}
+     onclick="chooseCalendarDate('${room.id}','${key}','${iso}')">${day}</button>`;
+  }
+
+  popup=`
+   <div class="calendar-popup show">
+    <div class="calendar-head">
+     <div class="calendar-month">${monthTitle}</div>
+     <div class="calendar-nav">
+      <button type="button" onclick="changeCalendarMonth('${room.id}','${key}',-1)">‹</button>
+      <button type="button" onclick="changeCalendarMonth('${room.id}','${key}',1)">›</button>
+     </div>
+    </div>
+    <div class="calendar-weekdays">${weekdayNames.map(x=>`<span>${x}</span>`).join("")}</div>
+    <div class="calendar-days">${days}</div>
+    <div class="calendar-footer">
+     <span>${key==="checkin"?T("calendarCheckin"):T("calendarCheckout")}</span>
+     <button type="button" class="calendar-clear" onclick="clearCalendarDate('${room.id}','${key}')">${T("calendarClear")}</button>
+    </div>
+   </div>`;
+ }
+
+ return `<div class="calendar-wrap">
+  <button type="button" class="date-trigger ${isOpen?"open":""}" onclick="openCalendar('${room.id}','${key}')">
+   <span>${label}</span><span class="date-icon">▦</span>
+  </button>
+  ${popup}
+ </div>`;
+}
+
+function chooseCalendarDate(id,key,value){
+ const s=stateOf(id);
+ s[key]=value;
+
+ if(key==="checkin"&&s.checkout&&s.checkout<=value){
+  s.checkout="";
+ }
+
+ activeCalendar=null;
+ renderRooms();
+ renderSummary();
+}
+
+function clearCalendarDate(id,key){
+ const s=stateOf(id);
+ s[key]="";
+ if(key==="checkin")s.checkout="";
+ activeCalendar=null;
+ renderRooms();
+ renderSummary();
+}
+
+function childOptions(max,selectedValue){
+ let html="";
+ for(let i=0;i<=max;i++){
+  html+=`<option value="${i}" ${Number(selectedValue)===i?"selected":""}>${i} ${T("children")}</option>`;
+ }
+ return html;
+}
+
+/* RENDER ROOM CARDS */
+function renderRooms(){
+ document.documentElement.lang=lang;
+ const list=document.getElementById("room-list");
+ const stats=getBookingStats();
+
+ list.innerHTML=rooms.map((room,index)=>{
+  const s=stateOf(room.id);
+  const nights=getNights(s);
+
+  const qtyOptions=Array.from({length:6},(_,i)=>
+   `<option value="${i}" ${s.qty===i?"selected":""}>${i}</option>`
+  ).join("");
+
+  const extraOptions=Array.from({length:room.maxExtra+1},(_,i)=>
+   `<option value="${i}" ${s.extra===i?"selected":""}>${i===0?T("noExtra"):`${i} ${T("person")}`}</option>`
+  ).join("");
+
+  const remainingForUnder=Math.max(0,room.maxChildren-s.child13Plus);
+  const remainingForOver=Math.max(0,room.maxChildren-s.childUnder13);
+
+  const roomAmount=room.price*s.qty*(nights||1);
+  const extraAmount=500*s.extra*s.qty*(nights||1);
+  const childAmount=CHILD_FEE*s.child13Plus*s.qty*(nights||1);
+  const petAmount=s.pet==="yes"&&s.weight==="large"?100*s.qty:0;
+
+  const cardDiscount=Math.round(roomAmount*stats.rate);
+  const beforeDiscount=roomAmount+extraAmount+childAmount+petAmount;
+  const displayPrice=beforeDiscount-cardDiscount;
+  const hasDiscount=cardDiscount>0;
+
+  return `
+   <article class="room-card ${s.qty?"active":""}" id="card-${room.id}">
+
+    <div class="gallery">
+     <img id="img-${room.id}" src="${room.images[imageIndexes[room.id]||0]}" alt="${room.name}">
+     <button class="prev" type="button" aria-label="Previous image" onclick="changeImage('${room.id}',-1)">‹</button>
+     <button class="next" type="button" aria-label="Next image" onclick="changeImage('${room.id}',1)">›</button>
+     <span class="gallery-count" id="count-${room.id}">
+      ${(imageIndexes[room.id]||0)+1} / ${room.images.length}
+     </span>
+    </div>
+
+    <div class="room-content">
+     <div class="room-topline">
+      <span class="room-tag">${T("room")} · THE PALAYANA</span>
+      <span class="room-number">0${index+1}</span>
+     </div>
+
+     <h2 class="room-name">${room.name}</h2>
+     <div class="room-type">
+      ${roomSize(room)}
+      <span class="room-feature"> | ${T(room.feature)}</span>
+     </div>
+
+     <div class="gold-rule"></div>
+
+     <div class="amenities">
+      <div class="amenity"><span class="amenity-icon">✧</span>${baseGuests(room)}</div>
+      <div class="amenity"><span class="amenity-icon">✧</span>${T("extraPrice")}</div>
+      <div class="amenity"><span class="amenity-icon">✧</span>${T("max")} ${room.maxExtra} ${T("person")}</div>
+      <div class="amenity"><span class="amenity-icon">✧</span>${T("childLimit")} ${room.maxChildren} ${T("children")}</div>
+     </div>
+
+     <div class="booking-fields">
+      <h4 class="section-label">${T("stay")}</h4>
+
+      <div class="date-grid">
+       <div class="field">
+        <label>${T("checkin")}</label>
+        ${calendarHTML(room,"checkin",s)}
+       </div>
+       <div class="field">
+        <label>${T("checkout")}</label>
+        ${calendarHTML(room,"checkout",s)}
+       </div>
+      </div>
+
+      <div class="room-controls">
+       <div>
+        <label class="field-label">${T("quantity")}</label>
+        <select onchange="updateRoom('${room.id}','qty',this.value)">
+         ${qtyOptions}
+        </select>
+       </div>
+       <div>
+        <label class="field-label">${T("extra")}</label>
+        <select onchange="updateRoom('${room.id}','extra',this.value)">
+         ${extraOptions}
+        </select>
+       </div>
+      </div>
+
+      <div class="children-section">
+       <div class="children-heading">
+        <h4>${T("childCount")}</h4>
+        <span class="children-limit">${T("max")} ${room.maxChildren} ${T("children")}</span>
+       </div>
+
+       <div class="children-grid">
+        <div class="child-box">
+         <label>${T("childUnderTitle")}</label>
+         <select onchange="updateRoom('${room.id}','childUnder13',this.value)">
+          ${childOptions(remainingForUnder,s.childUnder13)}
+         </select>
+         <small>${T("childUnderHint")}</small>
+        </div>
+
+        <div class="child-box">
+         <label>${T("childOverTitle")}</label>
+         <select onchange="updateRoom('${room.id}','child13Plus',this.value)">
+          ${childOptions(remainingForOver,s.child13Plus)}
+         </select>
+         <small>${T("childOverHint")}</small>
+        </div>
+       </div>
+
+       <div class="child-fee-note">
+        ${T("childTotal")}: ${childCount(s)} / ${room.maxChildren} ${T("children")}
+       </div>
+       <div class="child-limit-warning" id="child-warning-${room.id}">
+        ${T("childLimitError")}
+       </div>
+      </div>
+
+      <div class="pet-box">
+       <h4>${T("petTitle")}</h4>
+       <p>${T("petDesc")}</p>
+
+       <div class="pet-choice">
+        <label>
+         <input type="radio" name="pet-${room.id}" value="no"
+          ${s.pet==="no"?"checked":""}
+          onchange="updateRoom('${room.id}','pet','no')">
+         ${T("petNo")}
+        </label>
+
+        <label>
+         <input type="radio" name="pet-${room.id}" value="yes"
+          ${s.pet==="yes"?"checked":""}
+          onchange="updateRoom('${room.id}','pet','yes')">
+         ${T("petYes")}
+        </label>
+       </div>
+
+       <span class="pet-status">${T("petNotAllowed")}</span>
+
+       ${s.pet==="yes"?`
+        <div class="pet-weight">
+         <label class="field-label">${T("petWeight")}</label>
+         <select onchange="updateRoom('${room.id}','weight',this.value)">
+          <option value="small" ${s.weight==="small"?"selected":""}>${T("under20")}</option>
+          <option value="large" ${s.weight==="large"?"selected":""}>${T("over20")}</option>
+         </select>
+        </div>`:""}
+      </div>
+
+      <div class="price-row">
+       <div>
+        ${hasDiscount?`<div class="old-price">฿${money(beforeDiscount)}</div>`:""}
+
+        <div class="price">
+         ฿${money(displayPrice)}
+         <small>${T("afterDiscount")}</small>
+        </div>
+
+        <div class="price-detail">
+         ${s.qty?`${s.qty} ${T("roomsCount")}${nights?` × ${nights} ${T("night")}`:""}`:T("chooseDate")}
+        </div>
+
+        ${childAmount?`
+         <div class="price-detail">${T("childFee")}: ฿${money(childAmount)}</div>
+        `:""}
+
+        ${hasDiscount?`
+         <span class="discount-label">${T("discountApplied")} ${stats.rate*100}%</span>
+        `:""}
+       </div>
+
+       <button class="select-btn ${s.qty?"selected":""}" type="button" onclick="toggleRoom('${room.id}')">
+        ${s.qty?T("selected"):T("select")}
+       </button>
+      </div>
+     </div>
+    </div>
+   </article>`;
+ }).join("");
+}
+
+function changeImage(id,dir){
+ const room=rooms.find(r=>r.id===id);
+ imageIndexes[id]=(imageIndexes[id]||0)+dir;
+
+ if(imageIndexes[id]<0)imageIndexes[id]=room.images.length-1;
+ if(imageIndexes[id]>=room.images.length)imageIndexes[id]=0;
+
+ document.getElementById("img-"+id).src=room.images[imageIndexes[id]];
+ document.getElementById("count-"+id).textContent=(imageIndexes[id]+1)+" / "+room.images.length;
+}
+
+function updateRoom(id,key,value){
+ const s=stateOf(id);
+ const room=rooms.find(r=>r.id===id);
+
+ if(key==="qty"){
+  s.qty=Number(value);
+  if(s.qty===0){
+   s.extra=0;
+   s.childUnder13=0;
+   s.child13Plus=0;
+  }
+ }else if(key==="extra"){
+  s.extra=Math.min(Number(value),room.maxExtra);
+  if(s.qty===0)s.qty=1;
+ }else if(key==="childUnder13"){
+  const newValue=Number(value);
+  const allowed=Math.max(0,room.maxChildren-s.child13Plus);
+  s.childUnder13=Math.min(newValue,allowed);
+  if(s.qty===0&&(s.childUnder13>0||s.child13Plus>0))s.qty=1;
+ }else if(key==="child13Plus"){
+  const newValue=Number(value);
+  const allowed=Math.max(0,room.maxChildren-s.childUnder13);
+  s.child13Plus=Math.min(newValue,allowed);
+  if(s.qty===0&&(s.childUnder13>0||s.child13Plus>0))s.qty=1;
+ }else if(key==="pet"){
+  s.pet=value;
+ }else if(key==="weight"){
+  s.weight=value;
+ }
+
+ renderRooms();
+ renderSummary();
+}
+
+function toggleRoom(id){
+ const s=stateOf(id);
+
+ if(s.qty===0){
+  s.qty=1;
+ }else{
+  s.qty=0;
+  s.extra=0;
+  s.childUnder13=0;
+  s.child13Plus=0;
+ }
+
+ renderRooms();
+ renderSummary();
+}
+
+/* BOOKING SUMMARY */
+function renderSummary(){
+ const content=document.getElementById("summaryContent");
+ const warning=document.getElementById("bookingWarning");
+ const stats=getBookingStats();
+
+ if(!stats.chosen.length){
+  content.innerHTML=`
+   <div class="summary-empty">${T("empty")}</div>
+   <div class="summary-line"><span>${T("roomTotal")}</span><strong>฿0</strong></div>
+   <div class="summary-line"><span>${T("extraTotal")}</span><strong>฿0</strong></div>
+   <div class="summary-line"><span>${T("childFee")}</span><strong>฿0</strong></div>
+   <div class="summary-line"><span>${T("petFee")}</span><strong>฿0</strong></div>
+   <div class="summary-line discount"><span>${T("discount")}</span><strong>-฿0</strong></div>
+   <div class="summary-line total"><span>${T("total")}</span><span>฿0</span></div>`;
+  warning.textContent="";
+  return;
+ }
+
+ let roomTotal=0;
+ let extraTotal=0;
+ let childTotal=0;
+ let petTotal=0;
+ let allDatesValid=true;
+ let lines="";
+
+ stats.chosen.forEach(room=>{
+  const s=stateOf(room.id);
+  const nights=getNights(s);
+
+  if(!nights)allDatesValid=false;
+
+  const roomAmount=room.price*s.qty*(nights||1);
+  const extraAmount=500*s.extra*s.qty*(nights||1);
+  const childAmount=CHILD_FEE*s.child13Plus*s.qty*(nights||1);
+  const petAmount=s.pet==="yes"&&s.weight==="large"?100*s.qty:0;
+
+  roomTotal+=roomAmount;
+  extraTotal+=extraAmount;
+  childTotal+=childAmount;
+  petTotal+=petAmount;
+
+  const childText=childCount(s)
+   ?` · ${T("childTotal")} ${childCount(s)} ${T("children")}`
+   :"";
+
+  lines+=`
+   <div class="summary-line">
+    <span>
+     ${room.name} × ${s.qty}
+     ${nights?` (${nights} ${T("night")})`:""}
+     ${s.extra?` + ${s.extra} ${T("person")}`:""}
+     ${childText}
+    </span>
+    <strong>฿${money(roomAmount+extraAmount+childAmount+petAmount)}</strong>
+    <button class="remove-btn" type="button" onclick="toggleRoom('${room.id}')">${T("remove")}</button>
+   </div>`;
+ });
+
+ const discount=Math.round(roomTotal*stats.rate);
+ const grand=roomTotal+extraTotal+childTotal+petTotal-discount;
+
+ content.innerHTML=lines+`
+  <div class="summary-line">
+   <span>${T("roomTotal")}</span>
+   <strong>฿${money(roomTotal)}</strong>
+  </div>
+  <div class="summary-line">
+   <span>${T("extraTotal")}</span>
+   <strong>฿${money(extraTotal)}</strong>
+  </div>
+  <div class="summary-line">
+   <span>${T("childFee")}</span>
+   <strong>฿${money(childTotal)}</strong>
+  </div>
+  <div class="summary-line">
+   <span>${T("petFee")}</span>
+   <strong>฿${money(petTotal)}</strong>
+  </div>
+  <div class="summary-line discount">
+   <span>${T("discount")} (${stats.rate*100}%)</span>
+   <strong>-฿${money(discount)}</strong>
+  </div>
+  <div class="summary-line total">
+   <span>${T("total")}</span>
+   <span>฿${money(grand)}</span>
+  </div>`;
+
+ warning.textContent=allDatesValid
+  ?`${stats.totalRooms} ${T("roomsCount")} | ${stats.totalNights} ${T("night")} | ${T("discount")}: ${stats.rate*100}%`
+  :T("needDate");
+}
+
+/* CONFIRM BOOKING */
+function confirmBooking(){
+ const status=document.getElementById("confirmStatus");
+ const button=document.getElementById("confirmButton");
+ const stats=getBookingStats();
+
+ status.className="confirm-status";
+ status.textContent="";
+
+ if(!stats.chosen.length){
+  status.textContent=T("noRoom");
+  status.classList.add("error");
+  return;
+ }
+
+ let valid=true;
+
+ stats.chosen.forEach(room=>{
+  const s=stateOf(room.id);
+
+  if(!s.checkin||!s.checkout||getNights(s)<=0){
+   valid=false;
+  }
+
+  if(childCount(s)>room.maxChildren){
+   valid=false;
+  }
+ });
+
+ if(!valid){
+  status.textContent=T("noDate");
+  status.classList.add("error");
+  return;
+ }
+
+ let roomTotal=0;
+ let extraTotal=0;
+ let childTotal=0;
+ let petTotal=0;
+ let totalGuests=0;
+
+ const bookingRooms=stats.chosen.map(room=>{
+  const s=stateOf(room.id);
+  const nights=getNights(s);
+
+  const roomAmount=room.price*s.qty*nights;
+  const extraAmount=500*s.extra*s.qty*nights;
+  const childAmount=CHILD_FEE*s.child13Plus*s.qty*nights;
+  const petAmount=s.pet==="yes"&&s.weight==="large"?100*s.qty:0;
+
+  roomTotal+=roomAmount;
+  extraTotal+=extraAmount;
+  childTotal+=childAmount;
+  petTotal+=petAmount;
+
+  totalGuests+=(
+   room.capacity+s.extra+s.childUnder13+s.child13Plus
+  )*s.qty;
+
+  return {
+   id:room.id,
+   name:room.name,
+   price:room.price,
+   qty:s.qty,
+   quantity:s.qty,
+   extraGuests:s.extra,
+
+   childUnder13:s.childUnder13,
+   childrenUnder13:s.childUnder13,
+   child13Plus:s.child13Plus,
+   children13Plus:s.child13Plus,
+   totalChildren:childCount(s),
+   maxChildren:room.maxChildren,
+   childFeePerPerson:CHILD_FEE,
+   childFee:childAmount,
+   childFeeTotal:childAmount,
+
+   pet:s.pet,
+   petWeight:s.weight,
+   checkin:s.checkin,
+   checkout:s.checkout,
+   nights:nights,
+   capacity:room.capacity,
+   images:room.images
+  };
+ });
+
+ const discount=Math.round(roomTotal*stats.rate);
+
+ const grandTotal=
+  roomTotal+
+  extraTotal+
+  childTotal+
+  petTotal-
+  discount;
+
+ const bookingNo="PAL-"+Date.now().toString().slice(-8);
+ const firstRoom=bookingRooms[0];
+
+ const bookingData={
+  hotel:"The Palayana Hua Hin",
+  bookingNo:bookingNo,
+  language:lang,
+  rooms:bookingRooms,
+  chosen:bookingRooms,
+
+  totalRooms:stats.totalRooms,
+  totalNights:stats.totalNights,
+  totalGuests:totalGuests,
+
+  totalChildren:bookingRooms.reduce(
+   (sum,r)=>sum+(r.totalChildren*r.qty),0
+  ),
+
+  totalChildrenUnder13:bookingRooms.reduce(
+   (sum,r)=>sum+(r.childUnder13*r.qty),0
+  ),
+
+  totalChildren13Plus:bookingRooms.reduce(
+   (sum,r)=>sum+(r.child13Plus*r.qty),0
+  ),
+
+  checkin:firstRoom.checkin,
+  checkout:firstRoom.checkout,
+
+  roomName:bookingRooms.map(r=>r.name).join(" / "),
+
+  roomTotal:roomTotal,
+  roomSubtotal:roomTotal,
+  extraTotal:extraTotal,
+
+  childTotal:childTotal,
+  childFeeTotal:childTotal,
+  childFeePerPerson:CHILD_FEE,
+
+  petTotal:petTotal,
+
+  discountRate:stats.rate,
+  discount:discount,
+  discountBase:roomTotal,
+
+  grandTotal:grandTotal,
+  totalAmount:grandTotal,
+  paymentAmount:grandTotal,
+
+  paymentStatus:"รอชำระเงิน",
+  createdAt:new Date().toISOString()
+ };
+
+ try{
+  sessionStorage.setItem("palayanaBooking",JSON.stringify(bookingData));
+  sessionStorage.setItem("palayanaLanguage",lang);
+
+  status.textContent=T("success");
+  status.classList.add("success");
+  button.disabled=true;
+
+  setTimeout(()=>{
+   window.location.href="new3.html";
+  },350);
+
+ }catch(error){
+  button.disabled=false;
+  status.textContent="ไม่สามารถบันทึกข้อมูลได้ กรุณาลองใหม่อีกครั้ง";
+  status.classList.add("error");
+ }
+}
+
+/* LANGUAGE */
+function setLanguage(next,button){
+ lang=next;
+ document.documentElement.lang=next;
+
+ document.querySelectorAll(".languages button").forEach(b=>{
+  b.classList.remove("active");
+ });
+
+ if(button)button.classList.add("active");
+
+ document.querySelectorAll("[data-i]").forEach(el=>{
+  el.textContent=T(el.dataset.i);
+ });
+
+ sessionStorage.setItem("palayanaLanguage",next);
+
+ renderRooms();
+ renderSummary();
+}
+
+/* CLOSE CALENDAR */
+document.addEventListener("click",function(e){
+ if(!e.target.closest(".calendar-wrap")){
+  if(activeCalendar){
+   activeCalendar=null;
+   document.querySelectorAll(".calendar-popup").forEach(p=>p.classList.remove("show"));
+   document.querySelectorAll(".date-trigger").forEach(p=>p.classList.remove("open"));
+  }
+ }
+});
+
+/* INITIALIZE */
+const savedLanguage=sessionStorage.getItem("palayanaLanguage");
+if(savedLanguage&&words[savedLanguage]){
+ lang=savedLanguage;
+}
+
+document.querySelectorAll(".languages button").forEach(button=>{
+ button.classList.remove("active");
+ if(
+  (lang==="th"&&button.textContent.trim()==="TH")||
+  (lang==="en"&&button.textContent.trim()==="EN")||
+  (lang==="zh"&&button.textContent.trim()==="中文")
+ ){
+  button.classList.add("active");
+ }
+});
+
+renderRooms();
+renderSummary();
+</script>
+
+</body>
+</html>
