@@ -696,34 +696,6 @@ a{color:inherit;text-decoration:none}
 .confirm-status.error{color:#f1b6a9}
 .confirm-status.success{color:#d7e8ce}
 
-/* BOTTOM */
-.bottom-note{
- margin-top:55px;
- padding:50px 20px;
- text-align:center;
- background:#eeeae0;
-}
-.bottom-note .kicker{margin-bottom:13px}
-.bottom-note h3{
- font:30px 'Playfair Display',serif;
- color:var(--forest);
-}
-.bottom-note p{
- font-size:10px;
- color:#77796f;
- margin:12px 0 22px;
-}
-.bottom-btn{
- display:inline-block;
- background:var(--forest);
- color:white;
- padding:13px 29px;
- font-size:10px;
- letter-spacing:1px;
- transition:.2s;
-}
-.bottom-btn:hover{background:var(--gold);color:var(--forest-dark)}
-
 /* FOOTER */
 footer{
  background:var(--forest-dark);
@@ -797,6 +769,84 @@ footer a{color:var(--gold-light)}
  .bottom-note{padding:38px 17px}
  .bottom-note h3{font-size:26px}
 }
+
+
+/* CUSTOMER INFORMATION MODAL */
+.customer-modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ z-index:9999;
+ background:rgba(15,28,22,.72);
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+}
+.customer-modal.show{display:flex}
+.customer-modal-box{
+ background:#fffefa;
+ width:100%;
+ max-width:460px;
+ padding:35px;
+ box-shadow:0 20px 60px rgba(0,0,0,.2);
+}
+.customer-modal-box .kicker{text-align:center;margin-bottom:12px}
+.customer-modal-box h3{
+ font:27px 'Playfair Display',serif;
+ color:#263b32;
+ text-align:center;
+ margin-bottom:10px;
+}
+.customer-modal-box p{
+ text-align:center;
+ color:#929188;
+ font-size:11px;
+ margin-bottom:25px;
+}
+.customer-field{margin-bottom:17px}
+.customer-field label{
+ display:block;
+ font-size:11px;
+ color:#454b43;
+ margin-bottom:8px;
+}
+.customer-field input{
+ width:100%;
+ height:48px;
+ padding:12px;
+ border:1px solid #e9e4d9;
+ background:white;
+ outline:none;
+ font-size:13px;
+}
+.customer-field input:focus{border-color:#b99b68}
+.customer-error{
+ color:#b45f52;
+ font-size:10px;
+ margin-bottom:12px;
+}
+.customer-submit{
+ width:100%;
+ padding:15px;
+ border:0;
+ background:#263b32;
+ color:white;
+ font-size:11px;
+ letter-spacing:1px;
+}
+.customer-submit:hover{background:#b99b68;color:#172820}
+.customer-submit:disabled{opacity:.6;cursor:wait}
+.customer-cancel{
+ width:100%;
+ border:0;
+ background:transparent;
+ color:#929188;
+ font-size:10px;
+ margin-top:15px;
+ padding:8px;
+}
+@media(max-width:500px){.customer-modal-box{padding:27px 20px}}
+
 </style>
 </head>
 
@@ -879,14 +929,35 @@ footer a{color:var(--gold-light)}
   </button>
  </section>
 
- <section class="bottom-note">
-  <div class="kicker">THE PALAYANA HUA HIN</div>
-  <h3 data-i="bottomTitle">เริ่มต้นวันพักผ่อนของคุณ</h3>
-  <p data-i="bottomDesc">สอบถามข้อมูลเพิ่มเติมเกี่ยวกับห้องพักและการจองได้ที่โรงแรม</p>
-  <a class="bottom-btn" href="index.html#contact" data-i="contactUs">ติดต่อเรา</a>
- </section>
+
 
 </main>
+
+
+<!-- CUSTOMER INFORMATION MODAL -->
+<div class="customer-modal" id="customerModal" role="dialog" aria-modal="true" aria-labelledby="customerModalTitle">
+ <div class="customer-modal-box">
+  <div class="kicker">THE PALAYANA HUA HIN</div>
+  <h3 id="customerModalTitle">ข้อมูลผู้จอง</h3>
+  <p>กรุณากรอกข้อมูลผู้จองเพื่อดำเนินการจองห้องพัก</p>
+
+  <div class="customer-field">
+   <label for="customerName">ชื่อ - นามสกุล ผู้จอง *</label>
+   <input type="text" id="customerName" placeholder="กรอกชื่อและนามสกุล" autocomplete="name" maxlength="120" required>
+  </div>
+
+  <div class="customer-field">
+   <label for="customerPhone">เบอร์โทรศัพท์ *</label>
+   <input type="tel" id="customerPhone" placeholder="กรอกเบอร์โทรศัพท์" maxlength="10" inputmode="numeric" autocomplete="tel" required>
+  </div>
+
+  <div class="customer-error" id="customerError" role="alert"></div>
+  <button type="button" class="customer-submit" id="customerSubmitButton" onclick="submitCustomerInfo()">
+   ยืนยันข้อมูลและดำเนินการต่อ →
+  </button>
+  <button type="button" class="customer-cancel" onclick="closeCustomerModal()">ย้อนกลับ</button>
+ </div>
+</div>
 
 <footer>
  <div class="footer-logo">THE PALAYANA HUA HIN</div>
@@ -1766,7 +1837,7 @@ function renderSummary(){
 }
 
 /* CONFIRM BOOKING */
-function confirmBooking(){
+function saveBookingWithContact(){
  const status=document.getElementById("confirmStatus");
  const button=document.getElementById("confirmButton");
  const stats=getBookingStats();
@@ -1866,6 +1937,8 @@ function confirmBooking(){
 
  const bookingData={
   hotel:"The Palayana Hua Hin",
+  customerName:sessionStorage.getItem("palayanaCustomerName") || "",
+  customerPhone:sessionStorage.getItem("palayanaCustomerPhone") || "",
   bookingNo:bookingNo,
   language:lang,
   rooms:bookingRooms,
@@ -1932,6 +2005,80 @@ function confirmBooking(){
   status.classList.add("error");
  }
 }
+
+/* CUSTOMER INFORMATION BEFORE CONTINUING TO PAYMENT */
+function confirmBooking(){
+ const status=document.getElementById("confirmStatus");
+ const stats=getBookingStats();
+
+ status.className="confirm-status";
+ status.textContent="";
+
+ if(!stats.chosen.length){
+  status.textContent=T("noRoom");
+  status.classList.add("error");
+  return;
+ }
+
+ let valid=true;
+ stats.chosen.forEach(room=>{
+  const s=stateOf(room.id);
+  if(!s.checkin || !s.checkout || getNights(s)<=0 || childCount(s)>room.maxChildren){
+   valid=false;
+  }
+ });
+
+ if(!valid){
+  status.textContent=T("noDate");
+  status.classList.add("error");
+  return;
+ }
+
+ const modal=document.getElementById("customerModal");
+ const error=document.getElementById("customerError");
+ error.textContent="";
+ modal.classList.add("show");
+ document.getElementById("customerName").focus();
+}
+
+function closeCustomerModal(){
+ document.getElementById("customerModal").classList.remove("show");
+}
+
+function submitCustomerInfo(){
+ const name=document.getElementById("customerName").value.trim();
+ const phone=document.getElementById("customerPhone").value.replace(/\D/g,"");
+ const error=document.getElementById("customerError");
+ const submitButton=document.getElementById("customerSubmitButton");
+
+ error.textContent="";
+
+ if(name.length<2){
+  error.textContent="กรุณากรอกชื่อและนามสกุลให้ถูกต้อง";
+  document.getElementById("customerName").focus();
+  return;
+ }
+
+ if(!/^[0-9]{9,10}$/.test(phone)){
+  error.textContent="กรุณากรอกเบอร์โทรศัพท์ 9-10 หลัก";
+  document.getElementById("customerPhone").focus();
+  return;
+ }
+
+ sessionStorage.setItem("palayanaCustomerName",name);
+ sessionStorage.setItem("palayanaCustomerPhone",phone);
+
+ submitButton.disabled=true;
+ submitButton.textContent="กำลังบันทึกข้อมูล...";
+ closeCustomerModal();
+ saveBookingWithContact();
+}
+
+// Allow closing the information window by clicking the shaded background.
+document.addEventListener("click",function(event){
+ const modal=document.getElementById("customerModal");
+ if(event.target===modal) closeCustomerModal();
+});
 
 /* LANGUAGE */
 function setLanguage(next,button){
